@@ -1,0 +1,528 @@
+0 NOTE AgileMethodsProject https://github.com/leizheng8686/AgileMethodsProject
+0
+NOTE
+0 HEAD
+0
+HEAD
+1 SOUR Family Echo
+1
+Invalid tag
+2 WWW http://www.familyecho.com/
+2
+Invalid tag
+1 FILE P01
+1
+Invalid tag
+1 DATE 6 SEP 2016
+1
+Invalid tag
+1 DEST ANSTFILE
+1
+Invalid tag
+1 GEDC
+1
+Invalid tag
+2 VERS 5.5.1
+2
+Invalid tag
+2 FORM LINEAGE-LINKED
+2
+Invalid tag
+1 SUBM @I1@
+1
+Invalid tag
+2 NAME 86
+2
+Invalid tag
+1 SUBN
+1
+Invalid tag
+1 CHAR UTF-8
+1
+Invalid tag
+0 @I1@ INDI
+0
+INDI
+1 NAME James /Smith/
+1
+NAME
+2 GIVN James
+2
+Invalid tag
+2 SURN Smith
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX M
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1990
+2
+DATE
+1 FAMS @F1@
+1
+FAMS
+1 FAMC @F2@
+1
+FAMC
+0 @I2@ INDI
+0
+INDI
+1 NAME Jack /Smith/
+1
+NAME
+2 GIVN Jack
+2
+Invalid tag
+2 SURN Smith
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX M
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1960
+2
+DATE
+1 FAMS @F2@
+1
+FAMS
+1 FAMC @F3@
+1
+FAMC
+0 @I3@ INDI
+0
+INDI
+1 NAME Mary /Taylor/
+1
+NAME
+2 GIVN Mary
+2
+Invalid tag
+2 SURN Taylor
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX F
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1960
+2
+DATE
+1 FAMS @F2@
+1
+FAMS
+1 FAMC @F4@
+1
+FAMC
+0 @I4@ INDI
+0
+INDI
+1 NAME Susan /Smith/
+1
+NAME
+2 GIVN Susan
+2
+Invalid tag
+2 SURN Smith
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX F
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1992
+2
+DATE
+1 FAMC @F2@
+1
+FAMC
+0 @I5@ INDI
+0
+INDI
+1 NAME Tom /Smith/
+1
+NAME
+2 GIVN Tom
+2
+Invalid tag
+2 SURN Smith
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX M
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1933
+2
+DATE
+1 FAMS @F3@
+1
+FAMS
+0 @I6@ INDI
+0
+INDI
+1 NAME /Smith/
+1
+NAME
+2 SURN Smith
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX F
+1
+SEX
+1 FAMS @F3@
+1
+FAMS
+0 @I7@ INDI
+0
+INDI
+1 NAME Mark /Smith/
+1
+NAME
+2 GIVN Mark
+2
+Invalid tag
+2 SURN Smith
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX M
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1955
+2
+DATE
+1 FAMS @F5@
+1
+FAMS
+1 FAMS @F6@
+1
+FAMS
+1 FAMC @F3@
+1
+FAMC
+0 @I8@ INDI
+0
+INDI
+1 NAME Lisa /Williams/
+1
+NAME
+2 GIVN Lisa
+2
+Invalid tag
+2 SURN Williams
+2
+Invalid tag
+2 _MARNM Williams
+2
+Invalid tag
+1 SEX F
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1958
+2
+DATE
+1 DEAT Y
+1
+DEAT
+2 DATE 1 JAN 1995
+2
+DATE
+1 FAMS @F6@
+1
+FAMS
+0 @I9@ INDI
+0
+INDI
+1 NAME Linda /Jones/
+1
+NAME
+2 GIVN Linda
+2
+Invalid tag
+2 SURN Jones
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX F
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1957
+2
+DATE
+1 FAMS @F5@
+1
+FAMS
+0 @I10@ INDI
+0
+INDI
+1 NAME Bob /Smith/
+1
+NAME
+2 GIVN Bob
+2
+Invalid tag
+2 SURN Smith
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX M
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1988
+2
+DATE
+1 FAMC @F5@
+1
+FAMC
+0 @I11@ INDI
+0
+INDI
+1 NAME Jim /Smith/
+1
+NAME
+2 GIVN Jim
+2
+Invalid tag
+2 SURN Smith
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX F
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1990
+2
+DATE
+1 FAMC @F6@
+1
+FAMC
+0 @I12@ INDI
+0
+INDI
+1 NAME Adam /Taylor/
+1
+NAME
+2 GIVN Adam
+2
+Invalid tag
+2 SURN Taylor
+2
+Invalid tag
+2 _MARNM Taylor
+2
+Invalid tag
+1 SEX M
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1930
+2
+DATE
+1 FAMS @F4@
+1
+FAMS
+0 @I13@ INDI
+0
+INDI
+1 NAME Nancy /Evans/
+1
+NAME
+2 GIVN Nancy
+2
+Invalid tag
+2 SURN Evans
+2
+Invalid tag
+2 _MARNM Taylor
+2
+Invalid tag
+1 SEX F
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1935
+2
+DATE
+1 FAMS @F4@
+1
+FAMS
+0 @I14@ INDI
+0
+INDI
+1 NAME Helen /Wells/
+1
+NAME
+2 GIVN Helen
+2
+Invalid tag
+2 SURN Wells
+2
+Invalid tag
+2 _MARNM Smith
+2
+Invalid tag
+1 SEX F
+1
+SEX
+1 BIRT
+1
+BIRT
+2 DATE 1 JAN 1991
+2
+DATE
+1 FAMS @F1@
+1
+FAMS
+0 @F1@ FAM
+0
+FAM
+1 HUSB @I1@
+1
+HUSB
+1 WIFE @I14@
+1
+WIFE
+1 _CURRENT Y
+1
+Invalid tag
+0 @F2@ FAM
+0
+FAM
+1 HUSB @I2@
+1
+HUSB
+1 WIFE @I3@
+1
+WIFE
+1 CHIL @I1@
+1
+CHIL
+1 CHIL @I4@
+1
+CHIL
+1 _CURRENT Y
+1
+Invalid tag
+0 @F3@ FAM
+0
+FAM
+1 HUSB @I5@
+1
+HUSB
+1 WIFE @I6@
+1
+WIFE
+1 CHIL @I2@
+1
+CHIL
+1 CHIL @I7@
+1
+CHIL
+1 _CURRENT Y
+1
+Invalid tag
+0 @F4@ FAM
+0
+FAM
+1 HUSB @I12@
+1
+HUSB
+1 WIFE @I13@
+1
+WIFE
+1 CHIL @I3@
+1
+CHIL
+1 _CURRENT Y
+1
+Invalid tag
+0 @F5@ FAM
+0
+FAM
+1 HUSB @I7@
+1
+HUSB
+1 WIFE @I9@
+1
+WIFE
+1 CHIL @I10@
+1
+CHIL
+1 _CURRENT Y
+1
+Invalid tag
+0 @F6@ FAM
+0
+FAM
+1 HUSB @I7@
+1
+HUSB
+1 WIFE @I8@
+1
+WIFE
+1 CHIL @I11@
+1
+CHIL
+1 _CURRENT N
+1
+Invalid tag
+0 TRLR
+0
+TRLR

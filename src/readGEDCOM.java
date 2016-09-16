@@ -7,7 +7,9 @@ public class readGEDCOM {
 	public void read(File proj1) {
 		File proj3 = new File("P03.txt");
 		BufferedReader reader = null;
+		BufferedReader reader1 = null;
 		BufferedWriter writer = null;
+		BufferedWriter writer1 = null;
 		List<String> list0 = new ArrayList<>();
 		list0.add("INDI");
 		list0.add("FAM");
@@ -45,7 +47,6 @@ public class readGEDCOM {
 				if (elems[0].equals("1")) {
 					if (list1.contains(elems[1])) {
 						writer.write(str + "\r\n");
-						
 					}
 				}
 				if (elems[0].equals("2")) {
@@ -70,7 +71,6 @@ public class readGEDCOM {
 	}
 
 	public static void main(String args[]) {
-		// File tags = new File("Tags.txt");
 		File file = new File("P01-LeiZheng.ged");
 		readGEDCOM demo = new readGEDCOM();
 		demo.read(file);

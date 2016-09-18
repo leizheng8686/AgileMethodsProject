@@ -8,12 +8,16 @@ public class readGEDCOM {
 		File proj3 = new File("P03.txt");
 		File indi = new File("P03INDI.txt");
 		File fam = new File("P03FAM.txt");
+		File output = new File("P03output.txt");
 		BufferedReader reader = null;
 		BufferedReader reader1 = null;
 		BufferedReader reader2 = null;
+		BufferedReader reader3 = null;
+		BufferedReader reader4 = null;
 		BufferedWriter writer = null;
 		BufferedWriter writer1 = null;
 		BufferedWriter writer2 = null;
+		BufferedWriter writer3 = null;
 		List<String> list0 = new ArrayList<>();
 		list0.add("INDI");
 		list0.add("FAM");
@@ -110,6 +114,19 @@ public class readGEDCOM {
 			reader1.close();
 			reader2.close();
 			writer2.close();
+			reader3 = new BufferedReader(new FileReader(indi));
+			reader4 = new BufferedReader(new FileReader(fam));
+			writer3 = new BufferedWriter(new FileWriter(output));
+			String str4 = null;
+			while ((str4 = reader3.readLine()) != null) {
+				writer3.write(str4 + "\r");
+			}
+			String str5 = null;
+			while ((str5 = reader4.readLine()) != null) {
+				writer3.write(str5 + "\r");
+			}
+			reader3.close();
+			writer3.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

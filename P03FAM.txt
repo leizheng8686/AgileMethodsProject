@@ -1,1 +1,12 @@
-@F1@@I1@ James@I14@ Helen@F2@@I2@ Jack@I3@ Mary@F3@@I5@ Tom@I6@ /Smith/@F4@@I12@ Adam@I13@ Nancy@F5@@I7@ Mark@I9@ Linda@F6@@I7@ Mark@I8@ Lisa
+@F1@@I1@ 	James
+@I14@ 	Helen
+@F2@@I2@ 	Jack
+@I3@ 	Mary
+@F3@@I5@ 	Tom
+@I6@ 	Amy
+@F4@@I12@ 	Adam
+@I13@ 	Nancy
+@F5@@I7@ 	Mark
+@I9@ 	Linda
+@F6@@I7@ 	Mark
+@I8@ 	Lisa

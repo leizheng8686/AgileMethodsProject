@@ -1,0 +1,16 @@
+
+******************
+* Families
+
+Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
+@F1@           @I1@           	James         @I14@          	Helen       
+Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
+@F2@           @I2@           	Jack          @I3@           	Mary     
+Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
+@F3@           @I5@           	Tom           @I6@           	Amy    
+Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
+@F4@           @I12@          	Adam          @I13@          	Nancy       
+Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
+@F5@           @I7@           	Mark          @I9@           	Linda     
+Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
+@F6@           @I7@           	Mark          @I8@           	Lisa     

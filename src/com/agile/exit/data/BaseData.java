@@ -36,14 +36,14 @@ public class BaseData {
 		
 	}
 	
-	protected Date convertStringToData(String dateString){
+	protected Date convertStringToDate(String dateString){
 		DateFormat format = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH);
 		Date date;
 		try {
 			date = format.parse(dateString);
 		} catch (ParseException e) {
-			e.printStackTrace();
-			date = new Date();
+			// TODO Auto-generated catch block
+			date = null;
 		}
 		return date;
 	}

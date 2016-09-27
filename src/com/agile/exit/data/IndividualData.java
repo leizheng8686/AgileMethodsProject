@@ -10,7 +10,7 @@ public class IndividualData extends BaseData {
 	public String name = "";
 	public String sex = "";
 	public Date birth;
-	public String dateOfDeath = "";
+	public Date dateOfDeath;
 	public FamilyData familyAsChild;
 	public FamilyData familyAsSpouse;
 	private String familyAsChildString = "";
@@ -28,9 +28,9 @@ public class IndividualData extends BaseData {
 			sex = data;
 		}else if(tagName.equals("DATE") ){
 			if( lastTagName.equals("BIRT")){
-				birth = convertStringToData(data);
+				birth = convertStringToDate(data);
 			}else if( lastTagName.equals("DEAT") ){
-				dateOfDeath = data;
+				dateOfDeath = convertStringToDate(data);
 			}
 		}else if(tagName.equals("FAMC")){
 			familyAsChildString = data;

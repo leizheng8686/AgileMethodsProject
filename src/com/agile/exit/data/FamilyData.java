@@ -1,17 +1,19 @@
 package com.agile.exit.data;
 
+import java.util.Date;
+
 /**
  * @author exit
  *
  */
 public class FamilyData extends BaseData {
 	
-	public String marriageEvent = "";
+	public Date marriageDate;
+	public Date devorceDate;
 	public IndividualData wife;
 	public IndividualData husband;
 	public String childString = "";
-	public String devorceEvent = "";
-	public String date = "";
+	
 	private String husbandString = "";
 	private String wifeString = "";
 	
@@ -20,18 +22,18 @@ public class FamilyData extends BaseData {
 	}
 	
 	public void addInfoByString(String tagName, String data) {
-		if(tagName.equals("MARR") ){
-			marriageEvent = data;
-		}else if(tagName.equals("HUSB")){
+		if(tagName.equals("HUSB")){
 			husbandString = data;
 		}else if(tagName.equals("WIFE")){
 			wifeString = data;
 		}else if(tagName.equals("CHIL")){
 			childString = data;
 		}else if(tagName.equals("DIV")){
-			devorceEvent = data;
-		}else if(tagName.equals("DATE")){
-			date = data;
+			if( lastTagName.equals("BIRT")){
+				devorceDate = convertStringToDate(data);
+			}else if(tagName.equals("MARR") ){
+				marriageDate = convertStringToDate(data);
+			}
 		}
 		lastTagName = tagName;
 	}

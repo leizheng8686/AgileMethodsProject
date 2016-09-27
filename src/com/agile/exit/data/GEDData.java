@@ -17,11 +17,11 @@ public class GEDData {
 	private BaseData currentBaseData;
 	private ArrayList<String> gedStrings = new ArrayList<String>();
 	
-	private ArrayList<IndividualData> individuals = new ArrayList<IndividualData>();
-	private ArrayList<FamilyData> families = new ArrayList<FamilyData>();
+	public ArrayList<IndividualData> individuals = new ArrayList<IndividualData>();
+	public ArrayList<FamilyData> families = new ArrayList<FamilyData>();
 	
-	private Map<String,IndividualData> individualIdMap = new HashMap<String,IndividualData>();
-	private Map<String,FamilyData> familyIdMap = new HashMap<String,FamilyData>();
+	public Map<String,IndividualData> individualIdMap = new HashMap<String,IndividualData>();
+	public Map<String,FamilyData> familyIdMap = new HashMap<String,FamilyData>();
 	
 	
 	/**
@@ -38,23 +38,23 @@ public class GEDData {
 	 */
 	public void convertStringToObject()
 	{
-		for(int i=0;i<=gedStrings.size()-1;i++){
-			addNewElement(gedStrings.get(i));
+		for( String gedString : gedStrings ){
+			addNewElement(gedString);
 		}
-		for(int i=0;i<=individuals.size()-1;i++){
-			individuals.get(i).mapIdWithData();
+		for( IndividualData individual : individuals){
+			individual.mapIdWithData();
 		}
-		for(int i=0;i<=families.size()-1;i++){
-			families.get(i).mapIdWithData();
+		for( FamilyData family : families){
+			family.mapIdWithData();
 		}
 		//System.out.println(otherData);
 		
-		for(int i=0;i<=individuals.size()-1;i++){
-			//System.out.println(individuals.get(i).id() +" , "+individuals.get(i).birth);
+		/*for(int i=0;i<=individuals.size()-1;i++){
+			System.out.println(individuals.get(i).id() +" , "+individuals.get(i).birth);
 		}
 		for(int i=0;i<=families.size()-1;i++){
-//			System.out.println(families.get(i).id());
-		}
+			System.out.println(families.get(i).id());
+		}*/
 	}
 	
 

@@ -3,6 +3,8 @@
 import java.io.*;
 import java.util.*;
 
+import com.agile.exit.data.GEDData;
+
 public class readGEDCOM {
 
 	// read a GEDCOM file and output as a .txt
@@ -57,6 +59,7 @@ public class readGEDCOM {
             writer1.write("ID\t\tName\r\n");
 			while ((str = reader.readLine()) != null) {
 				String elems[] = str.split(" ");
+				GEDData.getInstance().addGEDString(str);
 				if (elems[0].equals("0")) {
 					for (int i = 1; i < elems.length; i++) {
 						if (list0.contains(elems[i])) {
@@ -206,6 +209,9 @@ public class readGEDCOM {
 				}
 			}
 		}
+		
+		
+		GEDData.getInstance().convertStringToObject();
 	}
 
 	public static void main(String args[]) {

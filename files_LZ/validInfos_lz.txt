@@ -1,0 +1,25 @@
+INDIVIDUALS
+ID	Name		Gender	Birth		Alive	Death
+@I1@	James /Smith/	M	1/1/1990	True	None
+@I2@	Jack /Smith/	M	1/1/1950	True	None
+@I3@	Mary /Taylor/	F	1/1/1960	True	None
+@I4@	Susan /Smith/	F	5/1/1990	True	None
+@I5@	Tom /Smith/	M	1/1/1933	True	None
+@I6@	Cythia /Smith/	F	5/9/1800	True	None
+@I7@	Mark /Smith/	M	1/1/1955	True	None
+@I8@	Lisa /Williams/	F	1/1/1958	False	1/1/1995	
+@I9@	Linda /Jones/	F	1/1/1957	True	None
+@I10@	Bob /Smith/	M	1/1/1988	True	None
+@I11@	Jim /Smith/	F	1/1/1990	True	None
+@I12@	Adam /Taylor/	M	1/1/1930	True	None
+@I13@	Nancy /Evans/	F	1/1/1935	True	None
+@I14@	Helen /Wells/	F	1/1/1991	True	None
+
+FAMILIES
+ID	Married		Divorced	Husband	Wife	Children
+@F1@	6/6/1950	None		@I1@	@I14@	
+@F2@	10/9/1936	None		@I2@	@I3@	@I1@ @I4@ 
+@F3@	4/26/1955	None		@I5@	@I6@	@I2@ @I7@ 
+@F4@	12/29/1925	None		@I12@	@I13@	@I3@ 
+@F5@	11/14/1975	None		@I7@	@I9@	@I10@ 
+@F6@	5/21/1972	9/13/1985	@I7@	@I8@	@I11@ 

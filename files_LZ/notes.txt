@@ -1,0 +1,18 @@
+birth date
+death date
+marriage date
+divorce date
+gender
+last name
+
+
+People
+ID     Name                Gender      Birthday     Alive       Death     |  Child       Spouse 
+bi00   Jimmy /Conners/     M           1/1/2020     False       1/1/2020  |  None        []
+bi01   Fred /Flinstone/    M           1/1/2020     True        None      |  None        ['bf01']
+
+Families
+ID       Married     Divorced    Husband   Wife     Children 
+bf00     1/1/2020    1/1/2020    None      None     []
+bf01     1/1/2019    None        bi02      bi01     []
+bf05     1/1/2010    1/1/2011    None      None     ['bi11', 'bi12']

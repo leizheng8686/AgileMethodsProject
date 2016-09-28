@@ -7,9 +7,9 @@ last name
 
 
 People
-ID     Name                Gender      Birthday     Alive       Death     |  Child       Spouse 
-bi00   Jimmy /Conners/     M           1/1/2020     False       1/1/2020  |  None        []
-bi01   Fred /Flinstone/    M           1/1/2020     True        None      |  None        ['bf01']
+ID     Name                Gender      Birthday     Alive       Death    
+bi00   Jimmy /Conners/     M           1/1/2020     False       1/1/2020  
+bi01   Fred /Flinstone/    M           1/1/2020     True        None      
 
 Families
 ID       Married     Divorced    Husband   Wife     Children 

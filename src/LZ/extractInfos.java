@@ -9,24 +9,24 @@ public class extractInfos {
 		File output = new File("files_LZ/validInfos_lz.txt");
 		BufferedReader reader = null;
 		BufferedWriter writer = null;
-		//add tags for different level
-		List<String> list0 = new ArrayList<>();
-		list0.add("INDI"); //0
-		list0.add("FAM");  //1
-		List<String> list1 = new ArrayList<>();
-		//individual info
-		list1.add("NAME"); //0
-		list1.add("SEX");  //1
-		list1.add("BIRT"); //2
-		list1.add("DEAT"); //3
-		//family info
-		list1.add("MARR"); //4
-		list1.add("DIV");  //5
-		list1.add("HUSB"); //6
-		list1.add("WIFE"); //7
-		list1.add("CHIL"); //8
-		List<String> list2 = new ArrayList<>();
-		list2.add("DATE");
+//		//add tags for different level
+//		List<String> list0 = new ArrayList<>();
+//		list0.add("INDI"); //0
+//		list0.add("FAM");  //1
+//		List<String> list1 = new ArrayList<>();
+//		//individual info
+//		list1.add("NAME"); //0
+//		list1.add("SEX");  //1
+//		list1.add("BIRT"); //2
+//		list1.add("DEAT"); //3
+//		//family info
+//		list1.add("MARR"); //4
+//		list1.add("DIV");  //5
+//		list1.add("HUSB"); //6
+//		list1.add("WIFE"); //7
+//		list1.add("CHIL"); //8
+//		List<String> list2 = new ArrayList<>();
+//		list2.add("DATE");
 
 		try{
 			reader = new BufferedReader(new FileReader(file));
@@ -74,10 +74,6 @@ public class extractInfos {
 							//System.out.println(sb.toString());  //test
 							writer.write(sb.toString() + "\r\n");
 						}
-						//get family info
-						if (elems[2].equals("FAM")) {
-							
-						}
 					}
 				}
 			}
@@ -86,7 +82,6 @@ public class extractInfos {
 			//Families
 			writer.write("FAMILIES\r\nID\tMarried\t\tDivorced\tHusband\tWife\tChildren\r\n");
 			while ((str = reader.readLine()) != null) {
-				System.out.println(str);  //test
 				String elems[] = str.split(" ");
 				if(elems.length > 2){
 					if (elems[0].equals("0")) {

@@ -214,8 +214,9 @@ public class readGEDCOM {
 			}
 		}
 		
-		//EKKASIT data
 		GEDData.getInstance().convertStringToObject();
+		
+		//EKKASIT data
 		EkkasitUserStories ekkasitUserStories = new EkkasitUserStories();
 		ekkasitUserStories.getUs29();
 		ekkasitUserStories.getUs30();

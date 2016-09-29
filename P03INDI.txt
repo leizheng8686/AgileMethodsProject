@@ -7,7 +7,7 @@ ID		Name
 @I3@ 	Mary
 @I4@ 	Susan
 @I5@ 	Tom
-@I6@ 	Amy
+@I6@ 	Cynthia
 @I7@ 	Mark
 @I8@ 	Lisa
 @I9@ 	Linda

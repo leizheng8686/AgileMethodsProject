@@ -28,10 +28,10 @@ public class FamilyData extends BaseData {
 			wifeString = data;
 		}else if(tagName.equals("CHIL")){
 			childString = data;
-		}else if(tagName.equals("DIV")){
-			if( lastTagName.equals("BIRT")){
+		}else if(tagName.equals("DATE")){
+			if( lastTagName.equals("DIV")){
 				devorceDate = convertStringToDate(data);
-			}else if(tagName.equals("MARR") ){
+			}else if(lastTagName.equals("MARR") ){
 				marriageDate = convertStringToDate(data);
 			}
 		}

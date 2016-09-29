@@ -7,7 +7,7 @@ Family ID      Husband ID     Husband Name   Wife ID        Wife Name
 Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
 @F2@           @I2@           	Jack          @I3@           	Mary     
 Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
-@F3@           @I5@           	Tom           @I6@           	Amy    
+@F3@           @I5@           	Tom           @I6@           	Cynthia    
 Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
 @F4@           @I12@          	Adam          @I13@          	Nancy       
 Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          

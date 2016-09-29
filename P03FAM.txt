@@ -3,7 +3,7 @@
 @F2@@I2@ 	Jack
 @I3@ 	Mary
 @F3@@I5@ 	Tom
-@I6@ 	Amy
+@I6@ 	Cynthia
 @F4@@I12@ 	Adam
 @I13@ 	Nancy
 @F5@@I7@ 	Mark

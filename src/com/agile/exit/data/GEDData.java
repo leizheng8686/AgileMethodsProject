@@ -7,7 +7,9 @@ import java.util.Map;
 
 /**
  * @author exit
- *
+ *http://www.familyecho.com
+ *u: JustMadcat
+ *p: 123456abc
  */
 public class GEDData {
 	private static GEDData instance = null;

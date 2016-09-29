@@ -1,5 +1,6 @@
 package com.agile.exit;
 
+import com.agile.exit.data.FamilyData;
 import com.agile.exit.data.GEDData;
 import com.agile.exit.data.IndividualData;
 
@@ -20,6 +21,9 @@ public class EkkasitUserStories {
 	public String getUs29(){
 		String message = printHead(" US29 : List all deceased individuals in a GEDCOM file ");
 		
+		/*for( FamilyData family : GEDData.getInstance().families){
+			System.out.println(family.marriageDate);
+		}*/
 		for( IndividualData individual : GEDData.getInstance().individuals){
 			if( individual.dateOfDeath != null ){
 				message += "	- "+individual.name + "\n";

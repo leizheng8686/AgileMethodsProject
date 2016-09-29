@@ -22,8 +22,8 @@ public class GEDData {
 	public ArrayList<IndividualData> individuals = new ArrayList<IndividualData>();
 	public ArrayList<FamilyData> families = new ArrayList<FamilyData>();
 	
-	public Map<String,IndividualData> individualIdMap = new HashMap<String,IndividualData>();
-	public Map<String,FamilyData> familyIdMap = new HashMap<String,FamilyData>();
+	private Map<String,IndividualData> individualIdMap = new HashMap<String,IndividualData>();
+	private Map<String,FamilyData> familyIdMap = new HashMap<String,FamilyData>();
 	
 	
 	/**
@@ -35,7 +35,7 @@ public class GEDData {
 	
 	
 	/**
-	 * - convert string to Data Object (not convert in the addGEDString() to avoid try catch in main
+	 * - convert string to Data Object (not convert in the addGEDString() to avoid try catch in main)
 	 * - map family and individual id to real Data Object
 	 */
 	public void convertStringToObject()

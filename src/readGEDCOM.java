@@ -3,6 +3,8 @@
 import java.io.*;
 import java.util.*;
 
+import JF.jfUserStory;
+
 import com.agile.exit.EkkasitUserStories;
 import com.agile.exit.data.GEDData;
 
@@ -220,6 +222,9 @@ public class readGEDCOM {
 		EkkasitUserStories ekkasitUserStories = new EkkasitUserStories();
 		ekkasitUserStories.getUs29();
 		ekkasitUserStories.getUs30();
+		jfUserStory jf =new jfUserStory();
+		jf.getUs01();
+		jf.getUs02();
 	}
 
 	public static void main(String args[]) {

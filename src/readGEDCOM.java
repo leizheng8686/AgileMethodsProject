@@ -237,7 +237,7 @@ public class readGEDCOM {
 		// ss data
 		ssonntagUserStories ss = new ssonntagUserStories();
 		ss.US25();
-		//ss.US26();
+		ss.US26();
 	}
 
 	public static void main(String args[]) {

@@ -27,13 +27,12 @@ public class ssonntagUserStories {
 	 *       and birth date should appear in a family
 	 */
 	public String US25() {
-		Date now = new Date();
-		SimpleDateFormat bartDateFormat = new SimpleDateFormat
-  				("MM/dd/yyyy");
 		String message = printHead(" US25 : Unique first names in families ");
 		String debugMsg = "";
 		
 		GEDData gedData = GEDData.getInstance();
+		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/DD/YYYY");
 		
 		for (FamilyData family : gedData.families) {
 				debugMsg += "Family ID " + family.id() + "\n";
@@ -53,8 +52,9 @@ public class ssonntagUserStories {
 					IndividualData compareChild1_data = gedData.getIndividualDataFromId(family.childrenStrings.get(compareChild1_index));
 					IndividualData compareChild2_data = gedData.getIndividualDataFromId(family.childrenStrings.get(compareChild2_index));
 					
-					debugMsg += "name1 = "+compareChild1_data.name+", name2 = "+compareChild2_data.name+"\n";
-					debugMsg += "bdate1 = "+compareChild1_data.birth+", bdate2 = "+compareChild2_data.birth+"\n";
+					debugMsg += "name1 = "+compareChild1_data.name+", name2 = "+compareChild2_data.name+"\n"
+							 +"bdate1 = "+simpleDateFormat.format(compareChild1_data.birth)
+							 +", bdate2 = "+simpleDateFormat.format(compareChild2_data.birth)+"\n";
 					
 					// if children names and birthday's are the same, print error
 					if( (compareChild1_data.name.compareTo(compareChild2_data.name) == 0) &&
@@ -63,7 +63,7 @@ public class ssonntagUserStories {
 						message += "ERROR: INDIVIDUAL: US25: "+compareChild1_data.id()
 								+": same name and birthdate as sibling "
 								+compareChild2_data.id()+", Name: "+compareChild1_data.name
-								+ "Birth date: "+compareChild1_data.birth+"\n";
+								+ ", Birth date: "+simpleDateFormat.format(compareChild1_data.birth)+"\n";
 					}
 					
 					
@@ -73,17 +73,150 @@ public class ssonntagUserStories {
 		}
 		autoPrintIfSet(message);
 		// uncomment for debug
-		//autoPrintIfSet(debugMsg);
+		// autoPrintIfSet(debugMsg);
 		return message;
 	}
 
 	/**
 	 * Sprint1
+	 * 
+	 * US26: Corresponding entries
+	 *       All family roles (spouse, child) specified in an individual record 
+	 *       should have corresponding entries in those family records, and all 
+	 *       individual roles (spouse, child) specified in family records should 
+	 *       have corresponding entries in those individual's records
 	 */
 
 	public String US26() {
 		String message = printHead(" US26 : Corresponding entries ");
+		String debugMsg = "";
+		
+		GEDData gedData = GEDData.getInstance();
+		
+		// Look at each individual
+		for (IndividualData individual : gedData.individuals) {
+			
+			// if listed as a spouse
+			if( individual.familyAsSpouse != null)
+			{
+				String familySpouseId = individual.familyAsSpouse.id();
+				debugMsg += "Individual is spouse in family " + familySpouseId + "\n";
+				boolean familyVerified = false;
+				
+				for (FamilyData family : gedData.families) {
+					// if family matches indicated
+					if( family.id().compareTo(familySpouseId) == 0 )
+					{
+						// if listed as husband or wife
+						if( ((family.husband != null) && (family.husband.id().compareTo(individual.id()) == 0)) ||
+							((family.wife != null) && (family.wife.id().compareTo(individual.id()) == 0)) )
+						{
+							familyVerified = true;
+							break;
+						}
+					}
+				}
+				
+				// if family record did not list individual as spouse
+				if( false == familyVerified )
+				{
+					// print error
+					message += "ERROR: INDIVIDUAL: " + individual.id() + " indicates spouse in family "
+							+ familySpouseId + ", but family record does not list individual as spouse\n";
+				}
+			}
+			
+			// if listed as a child
+			if( individual.familyAsChild != null)
+			{
+				String familyChildId = individual.familyAsChild.id();
+				debugMsg += "Individual is child in family " + familyChildId + "\n";
+				boolean familyVerified = false;
+				
+				for (FamilyData family : gedData.families) {
+					// if family matches indicated
+					if( family.id().compareTo(familyChildId) == 0 ){
+						// for every child in matching family
+						for(String childId : family.childrenStrings) {
+							debugMsg += "   childId/indivId = " + childId + "/" + individual.id() + "\n";
+							// if listed as one of the children
+							if( childId.compareTo(individual.id()) == 0 )
+							{
+								familyVerified = true;
+								break;
+							}
+						}
+					}
+				}
+				
+				// if family record did not list individual as child
+				if( false == familyVerified )
+				{
+					// print error
+					message += "ERROR: INDIVIDUAL: " + individual.id() + " indicates child in family "
+							+ familyChildId + ", but family record does not list individual as child\n";
+				}
+			}
+		
+		}
+		
+		// look at each family
+		for (FamilyData family : gedData.families) {
+			
+			// if husband listed
+			if(family.husband != null)
+			{
+				// get husband's individual record
+				String husbandId = family.husband.id();
+				IndividualData husbandData = gedData.getIndividualDataFromId(husbandId);
+				
+				// if husband's individual record does not list him as a spouse of this family
+				if( (husbandData.familyAsSpouse == null) ||
+					(husbandData.familyAsSpouse.id().compareTo(family.id()) != 0) )
+				{
+					// print error
+					message += "ERROR: FAMILY: " + family.id() + " lists individual " + husbandId
+							+ "as husband, but individual record does not list as spouse of this family\n";
+				}
+			}
+			
+			// if wife listed
+			if(family.wife != null)
+			{
+				// get wife's individual record
+				String wifeId = family.wife.id();
+				IndividualData wifeData = gedData.getIndividualDataFromId(wifeId);
+				
+				// if wife's individual record does not list her as a spouse of this family
+				if( (wifeData.familyAsSpouse == null) ||
+					(wifeData.familyAsSpouse.id().compareTo(family.id()) != 0) )
+				{
+					// print error
+					message += "ERROR: FAMILY: " + family.id() + " lists individual " + wifeId
+							+ "as wife, but individual record does not list as spouse of this family\n";
+				}
+			}
+			
+			// check all children
+			for(String childId : family.childrenStrings) {
+				// get child's individual record
+				IndividualData childData = gedData.getIndividualDataFromId(childId);
+				
+				// if child's individual record does not list them as a child of this family
+				if( (childData.familyAsChild == null) ||
+					(childData.familyAsChild.id().compareTo(family.id()) != 0) )
+				{
+					// print error
+					message += "ERROR: FAMILY: " + family.id() + " lists individual " + childId
+							+ "as child, but individual record does not list as child of this family\n";
+				}
+			}
+			
+		}
+		
 		autoPrintIfSet(message);
+		// uncomment for debug
+		//autoPrintIfSet(debugMsg);
 		return message;
 	}
 

@@ -1,5 +1,6 @@
 package com.agile.exit.data;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -9,9 +10,10 @@ import java.util.Date;
 public class FamilyData extends BaseData {
 	
 	public Date marriageDate;
-	public Date devorceDate;
+	public Date divorceDate;
 	public IndividualData wife;
 	public IndividualData husband;
+	
 	public String childString = "";
 	
 	private String husbandString = "";
@@ -27,10 +29,10 @@ public class FamilyData extends BaseData {
 		}else if(tagName.equals("WIFE")){
 			wifeString = data;
 		}else if(tagName.equals("CHIL")){
-			childString = data;
+			childString = data;  
 		}else if(tagName.equals("DATE")){
 			if( lastTagName.equals("DIV")){
-				devorceDate = convertStringToDate(data);
+				divorceDate = convertStringToDate(data);
 			}else if(lastTagName.equals("MARR") ){
 				marriageDate = convertStringToDate(data);
 			}

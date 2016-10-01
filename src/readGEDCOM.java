@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import JF.jfUserStory;
+import LZ.LeiUserStories;
 
 import com.agile.exit.EkkasitUserStories;
 import com.agile.exit.data.GEDData;
@@ -54,7 +55,6 @@ public class readGEDCOM {
 			writer2 = new BufferedWriter(new FileWriter(fam));
             writerFamTable = new BufferedWriter(new FileWriter(famTable));
 			String str = null;
-			System.out.println("it works");
             
             // Print ID/Name Header for print of individuals
             writer1.write("******************\r\n");
@@ -222,9 +222,16 @@ public class readGEDCOM {
 		EkkasitUserStories ekkasitUserStories = new EkkasitUserStories();
 		ekkasitUserStories.getUs29();
 		ekkasitUserStories.getUs30();
+		
+		//jf data
 		jfUserStory jf =new jfUserStory();
 		jf.getUs01();
 		jf.getUs02();
+		
+		//lz data
+		LeiUserStories lz = new LeiUserStories();
+		lz.US08();
+		lz.US10();
 	}
 
 	public static void main(String args[]) {

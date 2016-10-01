@@ -45,10 +45,10 @@ public class jfUserStory {
 				message += "ERROR: FAMILY: US01: 27: b"+family.id()+": Marriage date£º "
 						+ bartDateFormat.format(family.marriageDate) + " occurs in the future" + "\n";
 			}
-			if (family.devorceDate != null
-					&& family.devorceDate.compareTo(now) > 0) {
+			if (family.divorceDate != null
+					&& family.divorceDate.compareTo(now) > 0) {
 				message += "ERROR: FAMILY: US01: 27: b"+family.id()+": Divorce date£º "
-						+ bartDateFormat.format(family.devorceDate) + " occurs in the future" + "\n";
+						+ bartDateFormat.format(family.divorceDate) + " occurs in the future" + "\n";
 			}
 		}
 

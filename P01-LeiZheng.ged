@@ -144,6 +144,17 @@
 1 BIRT
 2 DATE 1 JAN 1991
 1 FAMS @F1@
+0 NOTE *********************
+0 NOTE *** US25 Error case 1
+0 @I15@ INDI
+1 NAME JamesB /Smith/
+2 GIVN JamesB
+2 SURN Smith
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1990
+1 FAMC @F2@
+0 NOTE *********************
 0 @F1@ FAM
 1 HUSB @I1@
 1 WIFE @I14@

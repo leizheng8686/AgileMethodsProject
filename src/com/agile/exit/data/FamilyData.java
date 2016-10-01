@@ -14,7 +14,7 @@ public class FamilyData extends BaseData {
 	public IndividualData wife;
 	public IndividualData husband;
 	
-	public String childString = "";
+	public ArrayList<String> childrenStrings = new ArrayList();
 	
 	private String husbandString = "";
 	private String wifeString = "";
@@ -29,7 +29,7 @@ public class FamilyData extends BaseData {
 		}else if(tagName.equals("WIFE")){
 			wifeString = data;
 		}else if(tagName.equals("CHIL")){
-			childString = data;  
+			childrenStrings.add(data);  
 		}else if(tagName.equals("DATE")){
 			if( lastTagName.equals("DIV")){
 				divorceDate = convertStringToDate(data);

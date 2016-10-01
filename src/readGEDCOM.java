@@ -5,6 +5,7 @@ import java.util.*;
 
 import JF.jfUserStory;
 import LZ.LeiUserStories;
+import SS.ssonntagUserStories;
 
 import com.agile.exit.EkkasitUserStories;
 import com.agile.exit.data.GEDData;
@@ -232,6 +233,11 @@ public class readGEDCOM {
 		LeiUserStories lz = new LeiUserStories();
 		lz.US08();
 		lz.US10();
+		
+		// ss data
+		ssonntagUserStories ss = new ssonntagUserStories();
+		ss.US25();
+		//ss.US26();
 	}
 
 	public static void main(String args[]) {

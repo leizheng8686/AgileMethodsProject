@@ -30,24 +30,24 @@ public class jfUserStory {
 		for (IndividualData individual : GEDData.getInstance().individuals) {
 			if (individual.dateOfDeath != null
 					&& individual.dateOfDeath.compareTo(now) > 0) {
-				message += "ERROR: INDIVIDUAL: US01: 20: b"+individual.id()+": Death date: "
+				message += "ERROR: INDIVIDUAL: US01: "+individual.id()+": Death date: "
 						+ bartDateFormat.format(individual.dateOfDeath) + " occurs in the future"
 						+ "\n";
 			}
 			if (individual.birth != null && individual.birth.compareTo(now) > 0) {
-				message += "ERROR: INDIVIDUAL: US01: 20: b"+individual.id()+": Birth date: "
+				message += "ERROR: INDIVIDUAL: US01: "+individual.id()+": Birth date: "
 						+ bartDateFormat.format(individual.birth) + " occurs in the future" + "\n";
 			}
 		}
 		for (FamilyData family : GEDData.getInstance().families) {
 			if (family.marriageDate != null
 					&& family.marriageDate.compareTo(now) > 0) {
-				message += "ERROR: FAMILY: US01: 27: b"+family.id()+": Marriage date£º "
+				message += "ERROR: FAMILY: US01: "+family.id()+": Marriage date£º "
 						+ bartDateFormat.format(family.marriageDate) + " occurs in the future" + "\n";
 			}
 			if (family.divorceDate != null
 					&& family.divorceDate.compareTo(now) > 0) {
-				message += "ERROR: FAMILY: US01: 27: b"+family.id()+": Divorce date£º "
+				message += "ERROR: FAMILY: US01: "+family.id()+": Divorce date£º "
 						+ bartDateFormat.format(family.divorceDate) + " occurs in the future" + "\n";
 			}
 		}
@@ -68,7 +68,7 @@ public class jfUserStory {
 			for (IndividualData individual : GEDData.getInstance().individuals) {
 				if (individual.name.equals(family.husband.name)) {
 					if (family.marriageDate.compareTo(individual.birth) < 0) {
-						message += "ERROR: FAMILY: US02: 24: b"+family.id()+": Husband's birth date"
+						message += "ERROR: FAMILY: US02: "+family.id()+": Husband's birth date"
 								+ bartDateFormat.format(individual.birth)
 								+ " following marriage date"
 								+ bartDateFormat.format(family.marriageDate) + "\n";
@@ -76,7 +76,7 @@ public class jfUserStory {
 				}
 				if (individual.name.equals(family.wife.name)) {
 					if (family.marriageDate.compareTo(individual.birth) < 0) {
-						message += "ERROR: FAMILY: US02: 24: b"+family.id()+": Wife's birth date"
+						message += "ERROR: FAMILY: US02: "+family.id()+": Wife's birth date"
 								+ bartDateFormat.format(individual.birth)
 								+ " following marriage date"
 								+ bartDateFormat.format(family.marriageDate) + "\n";

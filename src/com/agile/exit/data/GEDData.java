@@ -118,4 +118,79 @@ public class GEDData {
 	      }
 	      return instance;
 	   }
+	
+	/**
+	 * Print all Individuals
+	 */
+	public void printIndividuals() {
+		String msg = getPrintFormattedIndividuals();
+		System.out.println(msg);
+	}
+	
+	public String getPrintFormattedIndividuals() {
+		String printFormattedMsg = "******************\n"
+            		      + "* Individuals\n\n"
+            	  	      + "ID\t\tName\n";
+            	  	  
+		for (IndividualData individual : individuals) {
+			
+			printFormattedMsg += individual.id() + "\t\t" + individual.name + "\n";
+		}
+		
+		return printFormattedMsg;
+	}
+	
+	/**
+	 * Print all Families
+	 */
+	public void printFamilies() {
+		String msg = getPrintFormattedFamilies();
+		System.out.println(msg);
+	}
+	
+	public String getPrintFormattedFamilies() {
+		
+		String printFormattedMsg = "******************\n"
+  		      					 + "* Families\n\n";
+		
+            	  	  
+		for (FamilyData family : families) {
+			
+			StringBuffer famTableHeader = new StringBuffer("                                                                           ");
+	        StringBuffer famTableInfo   = new StringBuffer("                                                                           ");
+	        famTableHeader.insert(0, "Family ID");
+	        famTableHeader.insert(15, "Husband ID");
+	        famTableHeader.insert(30, "Husband Name");
+	        famTableHeader.insert(45, "Wife ID");
+	        famTableHeader.insert(60, "Wife Name");
+	        
+	        famTableInfo.insert(0, family.id());
+	        famTableInfo.insert(15, family.husband.id());
+	        famTableInfo.insert(30, family.husband.name);
+	        famTableInfo.insert(45, family.wife.id());
+	        famTableInfo.insert(60, family.wife.name);
+	        
+	        int index = 60;
+	        int childNumber = 1;
+	        for(String childId : family.childrenStrings)
+	        {
+	        	IndividualData childIndividual = getIndividualDataFromId(childId);
+	        	
+	        	index += 15;
+	        	famTableHeader.insert(index, "Child" + childNumber + " ID");
+	        	famTableInfo.insert(index, childId);
+	        	
+	        	index += 15;
+	        	famTableHeader.insert(index, "Child" + childNumber + " Name");
+	        	famTableInfo.insert(index, childIndividual.name);
+	        	
+	        	childNumber++;
+	        }
+	        
+			printFormattedMsg += famTableHeader + "\n" + famTableInfo + "\n\n";
+		}
+		
+		return printFormattedMsg;
+	}
+	
 }

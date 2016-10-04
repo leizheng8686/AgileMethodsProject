@@ -176,7 +176,7 @@ public class ssonntagUserStories {
 				{
 					// print error
 					message += "ERROR: FAMILY: " + family.id() + " lists individual " + husbandId
-							+ "as husband, but individual record does not list as spouse of this family\n";
+							+ " as husband, but individual record does not list as spouse of this family\n";
 				}
 			}
 			
@@ -193,7 +193,7 @@ public class ssonntagUserStories {
 				{
 					// print error
 					message += "ERROR: FAMILY: " + family.id() + " lists individual " + wifeId
-							+ "as wife, but individual record does not list as spouse of this family\n";
+							+ " as wife, but individual record does not list as spouse of this family\n";
 				}
 			}
 			
@@ -208,7 +208,7 @@ public class ssonntagUserStories {
 				{
 					// print error
 					message += "ERROR: FAMILY: " + family.id() + " lists individual " + childId
-							+ "as child, but individual record does not list as child of this family\n";
+							+ " as child, but individual record does not list as child of this family\n";
 				}
 			}
 			

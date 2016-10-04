@@ -219,6 +219,13 @@ public class readGEDCOM {
 		
 		GEDData.getInstance().convertStringToObject();
 		
+		// (easier) print of Individuals to console output
+		GEDData gedData = GEDData.getInstance();
+		gedData.printIndividuals();
+		
+		// (easer) print of families to console output
+		gedData.printFamilies();
+		
 		//EKKASIT data
 		EkkasitUserStories ekkasitUserStories = new EkkasitUserStories();
 		ekkasitUserStories.getUs29();

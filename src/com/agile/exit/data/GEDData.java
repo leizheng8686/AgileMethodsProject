@@ -172,17 +172,16 @@ public class GEDData {
 	        
 	        int index = 60;
 	        int childNumber = 1;
-	        for(String childId : family.childrenStrings)
+	        for(IndividualData child : family.children)
 	        {
-	        	IndividualData childIndividual = getIndividualDataFromId(childId);
 	        	
 	        	index += 15;
 	        	famTableHeader.insert(index, "Child" + childNumber + " ID");
-	        	famTableInfo.insert(index, childId);
+	        	famTableInfo.insert(index, child.id());
 	        	
 	        	index += 15;
 	        	famTableHeader.insert(index, "Child" + childNumber + " Name");
-	        	famTableInfo.insert(index, childIndividual.name);
+	        	famTableInfo.insert(index, child.name);
 	        	
 	        	childNumber++;
 	        }

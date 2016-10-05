@@ -13,9 +13,9 @@ public class FamilyData extends BaseData {
 	public Date divorceDate;
 	public IndividualData wife;
 	public IndividualData husband;
+	public ArrayList<IndividualData> children = new ArrayList<IndividualData>();
 	
 	public ArrayList<String> childrenStrings = new ArrayList();
-	
 	private String husbandString = "";
 	private String wifeString = "";
 	
@@ -43,5 +43,8 @@ public class FamilyData extends BaseData {
 	public void mapIdWithData(){
 		wife = GEDData.getInstance().getIndividualDataFromId(wifeString);
 		husband = GEDData.getInstance().getIndividualDataFromId(husbandString);
+		for( String childString : childrenStrings ){
+			children.add( GEDData.getInstance().getIndividualDataFromId(childString) );
+		}
 	}
 }

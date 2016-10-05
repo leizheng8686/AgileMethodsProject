@@ -1,5 +1,7 @@
 package com.agile.exit;
 
+import java.util.ArrayList;
+
 import com.agile.exit.data.FamilyData;
 import com.agile.exit.data.GEDData;
 import com.agile.exit.data.IndividualData;
@@ -45,14 +47,46 @@ public class EkkasitUserStories {
 			}
 		}
 		
+		/*ArrayList<IndividualData> allMarried = new ArrayList<IndividualData>();
+		for( FamilyData family : GEDData.getInstance().families ){
+			addIfNotExist( family.husband , allMarried);
+			addIfNotExist( family.wife , allMarried);
+		}
+		*/
+		autoPrintIfSet(message);
+		return message;
+	}
+	
+	/**
+	 * Sprint2
+	 */
+	public String getUs31(){
+		String message = printHead(" US31 : List all living people over 30 who have never been married in a GEDCOM file ");
+		
+		
+		
+		
+		
 		autoPrintIfSet(message);
 		return message;
 	}
 	
 	
 	
-	
-	
+	private void addIfNotExist(IndividualData individualInsert, ArrayList<IndividualData> allMarried)
+	{
+		boolean isExist = false;
+		for( IndividualData individual :  allMarried ){
+			if( individual.id().equals( individual.id() ) ){
+				isExist = true;
+				break;
+			}
+		}
+		
+		if( !isExist ){
+			allMarried.add(individualInsert);
+		}
+	}
 	
 	
 	

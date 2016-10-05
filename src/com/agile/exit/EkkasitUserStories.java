@@ -6,9 +6,8 @@ import com.agile.exit.data.FamilyData;
 import com.agile.exit.data.GEDData;
 import com.agile.exit.data.IndividualData;
 
-public class EkkasitUserStories{
+public class EkkasitUserStories extends BaseUserStories{
 	
-	private Boolean isAutoPrint;
 
 	public EkkasitUserStories(){
 		this(true);
@@ -90,29 +89,5 @@ public class EkkasitUserStories{
 	
 	
 	
-	/**
-	 * Helper
-	 */
 	
-	private void autoPrintIfSet(String message){
-		if(isAutoPrint){
-			System.out.println(message);
-		}
-	}
-	
-	private String printHead(String str ){
-		int padding = 6;
-		String message = getStarsLine( str.length() + padding*2)+"\n";
-		message += getStarsLine(padding) + str + getStarsLine(padding)+"\n";
-		message += getStarsLine(str.length() + padding*2) + "\n";
-		return message;
-	}
-	
-	private String getStarsLine(int length){
-		String line = "";
-		for( int i = 0; i <= length-1; i++ ){
-			line += "*";
-		}
-		return line;
-	}
 }

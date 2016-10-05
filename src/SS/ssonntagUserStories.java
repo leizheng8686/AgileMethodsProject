@@ -97,9 +97,10 @@ public class ssonntagUserStories {
 		for (IndividualData individual : gedData.individuals) {
 			
 			// if listed as a spouse
-			if( individual.familyAsSpouse != null)
+			// EXIT : if( individual.familyAsSpouse != null)
+			if( individual.familiesAsSpouse.size()>0 && individual.familiesAsSpouse.get(0) != null)
 			{
-				String familySpouseId = individual.familyAsSpouse.id();
+				String familySpouseId = individual.familiesAsSpouse.get(0).id();
 				debugMsg += "Individual is spouse in family " + familySpouseId + "\n";
 				boolean familyVerified = false;
 				
@@ -171,8 +172,8 @@ public class ssonntagUserStories {
 				IndividualData husbandData = gedData.getIndividualDataFromId(husbandId);
 				
 				// if husband's individual record does not list him as a spouse of this family
-				if( (husbandData.familyAsSpouse == null) ||
-					(husbandData.familyAsSpouse.id().compareTo(family.id()) != 0) )
+				// EXIT : if( (husbandData.familyAsSpouse == null) ||(husbandData.familyAsSpouse.id().compareTo(family.id()) != 0) ){
+				if( ( husbandData.familiesAsSpouse.size() <= 0 || husbandData.familiesAsSpouse.get(0).id().compareTo(family.id()) != 0) )
 				{
 					// print error
 					message += "ERROR: FAMILY: " + family.id() + " lists individual " + husbandId
@@ -188,8 +189,8 @@ public class ssonntagUserStories {
 				IndividualData wifeData = gedData.getIndividualDataFromId(wifeId);
 				
 				// if wife's individual record does not list her as a spouse of this family
-				if( (wifeData.familyAsSpouse == null) ||
-					(wifeData.familyAsSpouse.id().compareTo(family.id()) != 0) )
+				//EXIT : if( (wifeData.familyAsSpouse == null) || (wifeData.familyAsSpouse.id().compareTo(family.id()) != 0) )
+				if( ( wifeData.familiesAsSpouse.size() <= 0 || wifeData.familiesAsSpouse.get(0).id().compareTo(family.id()) != 0) )
 				{
 					// print error
 					message += "ERROR: FAMILY: " + family.id() + " lists individual " + wifeId

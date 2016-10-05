@@ -6,7 +6,7 @@ import com.agile.exit.data.FamilyData;
 import com.agile.exit.data.GEDData;
 import com.agile.exit.data.IndividualData;
 
-public class EkkasitUserStories {
+public class EkkasitUserStories{
 	
 	private Boolean isAutoPrint;
 
@@ -41,11 +41,11 @@ public class EkkasitUserStories {
 	public String getUs30(){
 		String message = printHead(" US30 : List all living married people in a GEDCOM file ");
 		
-		for( IndividualData individual : GEDData.getInstance().individuals){
+		/*for( IndividualData individual : GEDData.getInstance().individuals){
 			if( individual.familyAsSpouse != null && individual.dateOfDeath == null ){
 				message += "	- "+individual.name + "\n";
 			}
-		}
+		}*/
 		
 		/*ArrayList<IndividualData> allMarried = new ArrayList<IndividualData>();
 		for( FamilyData family : GEDData.getInstance().families ){

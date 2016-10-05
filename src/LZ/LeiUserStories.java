@@ -109,17 +109,18 @@ public class LeiUserStories {
   				("MM/dd/yyyy");
 		String message = printHead(" US12 : Parents not too old ");
 		for (FamilyData family : GEDData.getInstance().families) {
-			if (family.marriageDate != null) {
-				if(family.husband.birth != null && getAge(family.husband.birth, family.marriageDate) < 14){
-					message += "ERROR: FAMILY: US10: "+family.husband.id()+": Marriage before 14 - Birth date: "
-							+ bartDateFormat.format(family.husband.birth) + " Marriage date: "
-							+ bartDateFormat.format(family.marriageDate) + "\n";
-				}
-				if(family.wife.birth != null && getAge(family.wife.birth, family.marriageDate) < 14){
-					message += "ERROR: FAMILY: US10: "+family.wife.id()+": Marriage before 14 - Birth date: "
-							+ bartDateFormat.format(family.wife.birth) + " Marriage date: "
-							+ bartDateFormat.format(family.marriageDate) + "\n";
-				}
+			if (family.children != null) {
+				for(IndividualData indi : family.children)
+					if(indi.birth != null){
+						if(family.husband.birth != null && getAge(family.husband.birth, indi.birth) >= 80)
+							message += "ERROR: INDIVIDUAL: US12: "+family.husband.id()+": Father is too older - Birth date: "
+									+ bartDateFormat.format(family.husband.birth) + " to give birth to the Child : "
+									+ indi.id() + " Birth: " + bartDateFormat.format(indi.birth) + "\n";
+						if(family.wife.birth != null && getAge(family.husband.birth, indi.birth) >= 60)
+							message += "ERROR: INDIVIDUAL: US12: "+family.wife.id()+": Mother is too older - Birth date: "
+									+ bartDateFormat.format(family.wife.birth) + " to give birth to the Child : "
+									+ indi.id() + " Birth: " + bartDateFormat.format(indi.birth) + "\n";
+					}
 			}
 		}
 		autoPrintIfSet(message);

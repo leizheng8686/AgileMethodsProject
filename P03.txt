@@ -10,7 +10,7 @@
 1 NAME Jack /Smith/
 1 SEX M
 1 BIRT
-2 DATE 1 JAN 1930
+2 DATE 1 JAN 1950
 1 FAMS @F2@
 1 FAMC @F3@
 0 @I3@ INDI
@@ -52,7 +52,7 @@
 1 BIRT
 2 DATE 1 JAN 1958
 1 DEAT Y
-2 DATE 1 JAN 2995
+2 DATE 1 JAN 1995
 1 FAMS @F6@
 0 @I9@ INDI
 1 NAME Linda /Jones/
@@ -64,7 +64,7 @@
 1 NAME Bob /Smith/
 1 SEX M
 1 BIRT
-2 DATE 1 JAN 2988
+2 DATE 1 JAN 1988
 1 FAMC @F5@
 0 @I11@ INDI
 1 NAME Jim /Smith/
@@ -90,71 +90,16 @@
 1 BIRT
 2 DATE 1 JAN 1991
 1 FAMS @F1@
-0 NOTE ********************************************
-0 NOTE *** US25 Error case 1
-0 NOTE Child I15 same name as child I1 in family F2
-0 @I15@ INDI
-1 NAME James /Smith/
-1 SEX M
-1 BIRT
-2 DATE 1 JAN 1990
-1 FAMC @F2@
-0 NOTE ********************************************
-0 NOTE ********************************************
-0 NOTE *** US25 Error case 2
-0 NOTE Child I16 same name as child I11 in family F6
-0 @I16@ INDI
-1 NAME Jim /Smith/
-1 SEX F
-1 BIRT
-2 DATE 1 JAN 1990
-1 FAMC @F6@
-0 NOTE ********************************************
-0 NOTE ********************************************
-0 NOTE *** US26 Error case 1
-0 NOTE Indiv I17 listed as being child in family F2, 
-0 NOTE but not listed in F2 family record below
-0 @I17@ INDI
-1 NAME Andrea /Smith/
-1 SEX F
-1 BIRT
-2 DATE 1 JAN 1985
-1 FAMS @F7@
-1 FAMC @F2@
-0 NOTE ********************************************
-0 NOTE ********************************************
-0 NOTE *** US26 Error case 2
-0 NOTE Indiv I18 listed as being spouse in family F6, 
-0 NOTE but not listed in F6 family record below
-0 @I18@ INDI
-1 NAME Mike /Rodgers/
-1 SEX M
-1 BIRT
-2 DATE 14 JAN 1985
-1 FAMS @F6@
-0 NOTE ********************************************
-0 NOTE ********************************************
-0 NOTE *** US26 Error case 3
-0 NOTE Indiv I19 listed in family record below as being in
-0 NOTE family F7, but that is not indicated in this indiv record
-0 @I19@ INDI
-1 NAME Sam /Rodgers/
-1 SEX F
-1 BIRT
-2 DATE 14 JAN 2006
-1 FAMS @F6@
-0 NOTE ********************************************
 0 @F1@ FAM
 1 HUSB @I1@
 1 WIFE @I14@
 1 MARR
-2 DATE 6 JUN 1990
+2 DATE 6 JUN 1950
 0 @F2@ FAM
 1 HUSB @I2@
 1 WIFE @I3@
 1 CHIL @I1@
 1 CHIL @I4@
-1 CHIL @I15@
 1 MARR
 2 DATE 9 OCT 1936
 0 @F3@ FAM
@@ -169,31 +114,19 @@
 1 WIFE @I13@
 1 CHIL @I3@
 1 MARR
-2 DATE 29 DEC 1955
+2 DATE 29 DEC 1925
 0 @F5@ FAM
 1 HUSB @I7@
 1 WIFE @I9@
 1 CHIL @I10@
 1 MARR
-2 DATE 14 NOV 2975
+2 DATE 14 NOV 1975
 0 @F6@ FAM
 1 HUSB @I7@
 1 WIFE @I8@
 1 CHIL @I11@
-1 CHIL @I16@
 1 MARR
 2 DATE 21 MAY 1972
 1 DIV
-2 DATE 13 SEP 2985
-0 NOTE ********************************************
-0 NOTE *** US26 Error case 4
-0 NOTE Indiv I18 listed in family F7 here as spouse, but indiv
-0 NOTE record indicates I18 is a spouse in family F6
-0 @F7@ FAM
-1 HUSB @I18@
-1 WIFE @I17@
-1 CHIL @I19@
-1 MARR
-2 DATE 11 JUN 2005
-0 NOTE ********************************************
+2 DATE 13 SEP 1985
 0 TRLR

@@ -88,9 +88,9 @@ public class jfUserStory {
 							&& individual.birth != null
 							&& family.marriageDate.compareTo(individual.birth) < 0) {
 						message += "ERROR: FAMILY: US02: " + family.id()
-								+ ": Wife's birth date"
+								+ ": Wife's birth date: "
 								+ bartDateFormat.format(individual.birth)
-								+ " following marriage date"
+								+ " following marriage date: "
 								+ bartDateFormat.format(family.marriageDate)
 								+ "\n";
 					}

@@ -121,7 +121,25 @@ public class jfUserStory {
 		return message;
 	}
 
-	// Marriage before divorce
+	public String getUs04() {
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		String message = printHead(" US04 : Marriage before divorce ");
+		for (FamilyData family : GEDData.getInstance().families) {
+					if (family.marriageDate != null
+							&& family.divorceDate != null
+							&& family.marriageDate.compareTo(family.divorceDate) > 0) {
+						message += "ERROR: FAMILY: US04: " + family.id()
+								+ ": divorce date:"
+								+ bartDateFormat.format(family.divorceDate)
+								+ " occur before marriage date"
+								+ bartDateFormat.format(family.marriageDate)
+								+ "\n";
+					}
+				}
+		autoPrintIfSet(message);
+		return message;
+	}
+	
 	/**
 	 * Helper
 	 */

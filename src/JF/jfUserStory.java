@@ -24,31 +24,37 @@ public class jfUserStory {
 	 */
 	public String getUs01() {
 		Date now = new Date();
-		SimpleDateFormat bartDateFormat = new SimpleDateFormat
-  				("MM/dd/yyyy");
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		String message = printHead(" US01 : Dates before current date ");
 		for (IndividualData individual : GEDData.getInstance().individuals) {
 			if (individual.dateOfDeath != null
 					&& individual.dateOfDeath.compareTo(now) > 0) {
-				message += "ERROR: INDIVIDUAL: US01: "+individual.id()+": Death date: "
-						+ bartDateFormat.format(individual.dateOfDeath) + " occurs in the future"
-						+ "\n";
+				message += "ERROR: INDIVIDUAL: US01: " + individual.id()
+						+ ": Death date: "
+						+ bartDateFormat.format(individual.dateOfDeath)
+						+ " occurs in the future" + "\n";
 			}
 			if (individual.birth != null && individual.birth.compareTo(now) > 0) {
-				message += "ERROR: INDIVIDUAL: US01: "+individual.id()+": Birth date: "
-						+ bartDateFormat.format(individual.birth) + " occurs in the future" + "\n";
+				message += "ERROR: INDIVIDUAL: US01: " + individual.id()
+						+ ": Birth date: "
+						+ bartDateFormat.format(individual.birth)
+						+ " occurs in the future" + "\n";
 			}
 		}
 		for (FamilyData family : GEDData.getInstance().families) {
 			if (family.marriageDate != null
 					&& family.marriageDate.compareTo(now) > 0) {
-				message += "ERROR: FAMILY: US01: "+family.id()+": Marriage date£º "
-						+ bartDateFormat.format(family.marriageDate) + " occurs in the future" + "\n";
+				message += "ERROR: FAMILY: US01: " + family.id()
+						+ ": Marriage date£º "
+						+ bartDateFormat.format(family.marriageDate)
+						+ " occurs in the future" + "\n";
 			}
 			if (family.divorceDate != null
 					&& family.divorceDate.compareTo(now) > 0) {
-				message += "ERROR: FAMILY: US01: "+family.id()+": Divorce date£º "
-						+ bartDateFormat.format(family.divorceDate) + " occurs in the future" + "\n";
+				message += "ERROR: FAMILY: US01: " + family.id()
+						+ ": Divorce date£º "
+						+ bartDateFormat.format(family.divorceDate)
+						+ " occurs in the future" + "\n";
 			}
 		}
 
@@ -61,25 +67,32 @@ public class jfUserStory {
 	 */
 
 	public String getUs02() {
-		SimpleDateFormat bartDateFormat = new SimpleDateFormat
-  				("MM/dd/yyyy");
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		String message = printHead(" US02 : Birth before marriage ");
 		for (FamilyData family : GEDData.getInstance().families) {
 			for (IndividualData individual : GEDData.getInstance().individuals) {
 				if (individual.name.equals(family.husband.name)) {
-					if (family.marriageDate.compareTo(individual.birth) < 0) {
-						message += "ERROR: FAMILY: US02: "+family.id()+": Husband's birth date"
+					if (family.marriageDate != null
+							&& individual.birth != null
+							&& family.marriageDate.compareTo(individual.birth) < 0) {
+						message += "ERROR: FAMILY: US02: " + family.id()
+								+ ": Husband's birth date"
 								+ bartDateFormat.format(individual.birth)
 								+ " following marriage date"
-								+ bartDateFormat.format(family.marriageDate) + "\n";
+								+ bartDateFormat.format(family.marriageDate)
+								+ "\n";
 					}
 				}
 				if (individual.name.equals(family.wife.name)) {
-					if (family.marriageDate.compareTo(individual.birth) < 0) {
-						message += "ERROR: FAMILY: US02: "+family.id()+": Wife's birth date"
+					if (family.marriageDate != null
+							&& individual.birth != null
+							&& family.marriageDate.compareTo(individual.birth) < 0) {
+						message += "ERROR: FAMILY: US02: " + family.id()
+								+ ": Wife's birth date"
 								+ bartDateFormat.format(individual.birth)
 								+ " following marriage date"
-								+ bartDateFormat.format(family.marriageDate) + "\n";
+								+ bartDateFormat.format(family.marriageDate)
+								+ "\n";
 					}
 				}
 			}
@@ -88,6 +101,27 @@ public class jfUserStory {
 		return message;
 	}
 
+	/**
+	 * Sprint2
+	 */
+	public String getUs03() {
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		String message = printHead(" US03 : Birth before death ");
+		for (IndividualData individual : GEDData.getInstance().individuals) {
+			if (individual.dateOfDeath != null && individual.birth != null
+					&& individual.dateOfDeath.compareTo(individual.birth) < 0) {
+				message += "ERROR: INDIVIDUAL: US03: " + individual.id()
+						+ ": Death date: "
+						+ bartDateFormat.format(individual.dateOfDeath)
+						+ " occurs before birth date:"
+						+ bartDateFormat.format(individual.birth) + "\n";
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+
+	// Marriage before divorce
 	/**
 	 * Helper
 	 */

@@ -236,6 +236,7 @@ public class readGEDCOM {
 		jf.getUs01();
 		jf.getUs02();
 		jf.getUs03();
+		
 		//lz data
 		LeiUserStories lz = new LeiUserStories();
 		lz.US08();

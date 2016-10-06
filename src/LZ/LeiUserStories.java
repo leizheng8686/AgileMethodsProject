@@ -1,6 +1,5 @@
 package LZ;
 
-import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,35 +16,13 @@ public class LeiUserStories {
 	public LeiUserStories(Boolean isAutoPrint){
 		this.isAutoPrint = isAutoPrint;
 	}
-//	public LeiUserStories(){
-//		File input = new File("files_LZ/validInfos_lz.txt");
-//		File output = new File("files_LZ/errorsReport_lz.txt");
-//		BufferedReader reader = null;
-//		BufferedWriter writer = null;
-//		
-//		try{
-//			reader = new BufferedReader(new FileReader(input));
-//			writer = new BufferedWriter(new FileWriter(output));
-//			
-//		} catch(IOException e) {
-//			e.printStackTrace();
-//		} finally {
-//			if (reader != null || writer != null) {
-//				try {
-//					reader.close();
-//					writer.close();
-//				} catch (IOException e1) {
-//				}
-//			}
-//		}
-//	}
+
 	//Sprint 1
 	/*
 	 * US08 : Birth before marriage of parents
 	 * Child should be born after marriage of parents (and before their divorce)
 	 */
 	public String US08(){
-		Date now = new Date();
 		SimpleDateFormat bartDateFormat = new SimpleDateFormat
   				("MM/dd/yyyy");
 		String message = printHead(" US08 : Birth before marriage of parents ");
@@ -78,6 +55,59 @@ public class LeiUserStories {
 		SimpleDateFormat bartDateFormat = new SimpleDateFormat
   				("MM/dd/yyyy");
 		String message = printHead(" US10 : Marriage after 14 ");
+		for (FamilyData family : GEDData.getInstance().families) {
+			if (family.marriageDate != null) {
+				if(family.husband.birth != null && getAge(family.husband.birth, family.marriageDate) < 14){
+					message += "ERROR: FAMILY: US10: "+family.husband.id()+": Marriage before 14 - Birth date: "
+							+ bartDateFormat.format(family.husband.birth) + " Marriage date: "
+							+ bartDateFormat.format(family.marriageDate) + "\n";
+				}
+				if(family.wife.birth != null && getAge(family.wife.birth, family.marriageDate) < 14){
+					message += "ERROR: FAMILY: US10: "+family.wife.id()+": Marriage before 14 - Birth date: "
+							+ bartDateFormat.format(family.wife.birth) + " Marriage date: "
+							+ bartDateFormat.format(family.marriageDate) + "\n";
+				}
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+	
+	/*
+	 * US11 : No bigamy
+	 * Marriage should not occur during marriage to another spouse
+	 */
+	public String US11(){
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat
+  				("MM/dd/yyyy");
+		String message = printHead(" US10 : Marriage after 14 ");
+		for (FamilyData family : GEDData.getInstance().families) {
+			if (family.marriageDate != null) {
+				if(family.husband.birth != null && getAge(family.husband.birth, family.marriageDate) < 14){
+					message += "ERROR: FAMILY: US10: "+family.husband.id()+": Marriage before 14 - Birth date: "
+							+ bartDateFormat.format(family.husband.birth) + " Marriage date: "
+							+ bartDateFormat.format(family.marriageDate) + "\n";
+				}
+				if(family.wife.birth != null && getAge(family.wife.birth, family.marriageDate) < 14){
+					message += "ERROR: FAMILY: US10: "+family.wife.id()+": Marriage before 14 - Birth date: "
+							+ bartDateFormat.format(family.wife.birth) + " Marriage date: "
+							+ bartDateFormat.format(family.marriageDate) + "\n";
+				}
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+	
+	/*
+	 * US12 : Parents not too old
+	 * Mother should be less than 60 years older than her children 
+	 * and father should be less than 80 years older than his children
+	 */
+	public String US12(){
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat
+  				("MM/dd/yyyy");
+		String message = printHead(" US12 : Parents not too old ");
 		for (FamilyData family : GEDData.getInstance().families) {
 			if (family.marriageDate != null) {
 				if(family.husband.birth != null && getAge(family.husband.birth, family.marriageDate) < 14){

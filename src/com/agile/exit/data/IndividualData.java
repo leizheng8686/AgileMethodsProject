@@ -1,6 +1,8 @@
 package com.agile.exit.data;
 
+import java.util.ArrayList;
 import java.util.Date;
+
 
 /**
  * @author exit
@@ -12,9 +14,9 @@ public class IndividualData extends BaseData {
 	public Date birth;
 	public Date dateOfDeath;
 	public FamilyData familyAsChild;
-	public FamilyData familyAsSpouse;
+	public ArrayList<FamilyData> familiesAsSpouse = new ArrayList<FamilyData>();
 	private String familyAsChildString = "";
-	private String familyAsSpouseString = "";
+	private ArrayList<String> familiesAsSpouseString = new ArrayList<String>();
 	
 	public IndividualData(String id){
 		super(id);
@@ -35,14 +37,16 @@ public class IndividualData extends BaseData {
 		}else if(tagName.equals("FAMC")){
 			familyAsChildString = data;
 		}else if(tagName.equals("FAMS")){
-			familyAsSpouseString = data;
+			familiesAsSpouseString.add(data);
 		}
 		lastTagName = tagName;
 	}
 	
 	public void mapIdWithData(){
 		familyAsChild = GEDData.getInstance().getFamilyDataFromId(familyAsChildString);
-		familyAsSpouse = GEDData.getInstance().getFamilyDataFromId(familyAsSpouseString);
+		for( String familyAsSpouseString : familiesAsSpouseString ){
+			familiesAsSpouse.add( GEDData.getInstance().getFamilyDataFromId(familyAsSpouseString) );
+		}
 	}
 	
 }

@@ -30,6 +30,9 @@ public class IndividualData extends BaseData {
 			sex = data;
 		}else if(tagName.equals("DATE") ){
 			if( lastTagName.equals("BIRT")){
+				if(birth!=null){
+					errors.add(DataError.ERROR_MULTIPLE_BIRTH);
+				}
 				birth = convertStringToDate(data);
 			}else if( lastTagName.equals("DEAT") ){
 				dateOfDeath = convertStringToDate(data);

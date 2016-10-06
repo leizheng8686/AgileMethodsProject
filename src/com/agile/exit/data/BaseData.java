@@ -3,6 +3,7 @@ package com.agile.exit.data;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -11,6 +12,7 @@ import java.util.Locale;
  *
  */
 public class BaseData {
+	public ArrayList<String> errors = new ArrayList<String>();
 	private String id;
 	protected String lastTagName = "";
 	public BaseData(String id){

@@ -15,7 +15,7 @@ public class FamilyData extends BaseData {
 	public IndividualData husband;
 	public ArrayList<IndividualData> children = new ArrayList<IndividualData>();
 	
-	public ArrayList<String> childrenStrings = new ArrayList();
+	public ArrayList<String> childrenStrings = new ArrayList<String>();
 	private String husbandString = "";
 	private String wifeString = "";
 	

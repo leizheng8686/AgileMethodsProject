@@ -209,8 +209,18 @@
 1 SEX F
 1 BIRT
 2 DATE 14 JAN 2006
-1 FAMS @F6@
 0 NOTE ********************************************
+0 NOTE *** US4 Error case 1 Death before birth
+0 NOTE *** New create one
+0 @I20@ INDI
+1 NAME Lili /Will/
+2 GIVN Lili
+2 SURN Will
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1930
+1 DEAT Y
+2 DATE 1 JAN 1920
 0 @F1@ FAM
 1 HUSB @I1@
 1 WIFE @I14@
@@ -270,4 +280,13 @@
 2 DATE 11 JUN 2005
 1 _CURRENT Y
 0 NOTE ********************************************
+0 NOTE **** U04 Error case1  Divorce before Marry
+0 NOTE **** Create a new family
+0 @F8@ FAM
+1 HUSB @I18@
+1 WIFE @I20@
+1 MARR
+2 DATE 21 MAY 1930
+1 DIV
+2 DATE 13 SEP 1920
 0 TRLR

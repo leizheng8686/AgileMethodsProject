@@ -93,12 +93,39 @@ public class LeiUserStories {
 										&& individual.familiesAsSpouse.get(i).divorceDate.compareTo(individual.familiesAsSpouse.get(j).marriageDate) > 0)
 									if(individual.sex.equals("M"))
 										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
-												+ individual.familiesAsSpouse.get(i).wife.id()  + " and " 
-												+ individual.familiesAsSpouse.get(j).wife.id() + "\n";
+												+ individual.familiesAsSpouse.get(i).wife.id() + "(" 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).marriageDate) + " - "
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).divorceDate) + ")"+ " and " 
+												+ individual.familiesAsSpouse.get(j).wife.id() + "(" 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).marriageDate) + " - "
+												+ (individual.familiesAsSpouse.get(j).divorceDate != null?
+														bartDateFormat.format(individual.familiesAsSpouse.get(j).divorceDate) : " ") + ")"+ "\n";
 									else
 										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
-												+ individual.familiesAsSpouse.get(i).husband.id()  + " and " 
-												+ individual.familiesAsSpouse.get(j).husband.id() + "\n";
+												+ individual.familiesAsSpouse.get(i).husband.id() + "(" 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).marriageDate) + " - "
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).divorceDate) + ")"+ " and " 
+												+ individual.familiesAsSpouse.get(j).husband.id() + "(" 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).marriageDate) + " - "
+												+ (individual.familiesAsSpouse.get(j).divorceDate != null?
+														bartDateFormat.format(individual.familiesAsSpouse.get(j).divorceDate) : " ") + ")"+ "\n";
+							}else if(individual.familiesAsSpouse.get(j).divorceDate != null){
+								if(individual.familiesAsSpouse.get(i).marriageDate.compareTo(individual.familiesAsSpouse.get(j).divorceDate) < 0
+										&& individual.familiesAsSpouse.get(i).divorceDate.compareTo(individual.familiesAsSpouse.get(j).divorceDate) > 0)
+									if(individual.sex.equals("M"))
+										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
+												+ individual.familiesAsSpouse.get(i).wife.id() + "(" 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).marriageDate) + " - "
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).divorceDate) + ")"+ " and " 
+												+ individual.familiesAsSpouse.get(j).wife.id() + "(  - "
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).divorceDate) + ")"+ "\n";
+									else
+										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
+												+ individual.familiesAsSpouse.get(i).husband.id() + "(" 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).marriageDate) + " - "
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).divorceDate) + ")"+ " and " 
+												+ individual.familiesAsSpouse.get(j).husband.id() + "(  - " 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).divorceDate) + ")"+ "\n";
 							}
 						}
 					}// only marriage date
@@ -110,12 +137,18 @@ public class LeiUserStories {
 										&& individual.familiesAsSpouse.get(j).divorceDate.compareTo(individual.familiesAsSpouse.get(i).marriageDate) > 0)
 									if(individual.sex.equals("M"))
 										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
-												+ individual.familiesAsSpouse.get(i).wife.id()  + " and " 
-												+ individual.familiesAsSpouse.get(j).wife.id() + "\n";
+												+ individual.familiesAsSpouse.get(i).wife.id() + "(" 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).marriageDate) + " -  ) and " 
+												+ individual.familiesAsSpouse.get(j).wife.id() + "("
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).marriageDate) + " - " 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).divorceDate) + ")"+ "\n";
 									else
 										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
-												+ individual.familiesAsSpouse.get(i).husband.id()  + " and " 
-												+ individual.familiesAsSpouse.get(j).husband.id() + "\n";
+												+ individual.familiesAsSpouse.get(i).husband.id() + "(" 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).marriageDate) + " -  ) and " 
+												+ individual.familiesAsSpouse.get(j).husband.id() + "("
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).marriageDate) + " - " 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).divorceDate) + ")"+ "\n";
 							}
 						}
 					}// only divorce date
@@ -127,12 +160,18 @@ public class LeiUserStories {
 										&& individual.familiesAsSpouse.get(j).divorceDate.compareTo(individual.familiesAsSpouse.get(i).divorceDate) > 0)
 									if(individual.sex.equals("M"))
 										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
-												+ individual.familiesAsSpouse.get(i).wife.id()  + " and " 
-												+ individual.familiesAsSpouse.get(j).wife.id() + "\n";
+												+ individual.familiesAsSpouse.get(i).wife.id() + "(  - " 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).divorceDate) + ") and " 
+												+ individual.familiesAsSpouse.get(j).wife.id() + "("
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).marriageDate) + " - " 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).divorceDate) + ")"+ "\n";
 									else
 										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
-												+ individual.familiesAsSpouse.get(i).husband.id()  + " and " 
-												+ individual.familiesAsSpouse.get(j).husband.id() + "\n";
+												+ individual.familiesAsSpouse.get(i).husband.id() + "(  - " 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(i).divorceDate) + ") and " 
+												+ individual.familiesAsSpouse.get(j).husband.id() + "("
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).marriageDate) + " - " 
+												+ bartDateFormat.format(individual.familiesAsSpouse.get(j).divorceDate) + ")"+ "\n";
 							}
 						}
 					}
@@ -157,13 +196,13 @@ public class LeiUserStories {
 				for(IndividualData indi : family.children)
 					if(indi.birth != null){
 						if(family.husband.birth != null && getAge(family.husband.birth, indi.birth) >= 80)
-							message += "ERROR: INDIVIDUAL: US12: "+family.husband.id()+": Father is too older - Birth date: "
-									+ bartDateFormat.format(family.husband.birth) + " to give birth to the Child : "
-									+ indi.id() + " Birth: " + bartDateFormat.format(indi.birth) + "\n";
-						if(family.wife.birth != null && getAge(family.husband.birth, indi.birth) >= 60)
-							message += "ERROR: INDIVIDUAL: US12: "+family.wife.id()+": Mother is too older - Birth date: "
-									+ bartDateFormat.format(family.wife.birth) + " to give birth to the Child : "
-									+ indi.id() + " Birth: " + bartDateFormat.format(indi.birth) + "\n";
+							message += "ERROR: INDIVIDUAL: US12: Father : "+family.husband.id()+" (Birth: " 
+									+ bartDateFormat.format(family.husband.birth) + ") is too old to give birth to the Child : "
+									+ indi.id() + " (Birth: " + bartDateFormat.format(indi.birth) + ")\n";
+						if(family.wife.birth != null && getAge(family.wife.birth, indi.birth) >= 60)
+							message += "ERROR: INDIVIDUAL: US12: Mother : "+family.wife.id()+" (Birth: " 
+									+ bartDateFormat.format(family.wife.birth) + ") is too old to give birth to the Child : "
+									+ indi.id() + " (Birth: " + bartDateFormat.format(indi.birth) + ")\n";
 					}
 			}
 		}

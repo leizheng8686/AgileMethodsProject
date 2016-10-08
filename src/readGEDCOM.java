@@ -240,15 +240,22 @@ public class readGEDCOM {
 		jf.getUs03();
 		jf.getUs04();
 		
-		//lz data
-		LeiUserStories lz = new LeiUserStories();
-		lz.US08();
-		lz.US10();
+		//call lei's user stories
+		leiUS();
 		
 		// ss data
 		ssonntagUserStories ss = new ssonntagUserStories();
 		ss.US25();
 		ss.US26();
+	}
+	
+	//Lei Zheng's User stories
+	public void leiUS(){
+		LeiUserStories lz = new LeiUserStories();
+		lz.US08();
+		lz.US10();
+		lz.US11();
+		lz.US12();
 	}
 
 	public static void main(String args[]) {

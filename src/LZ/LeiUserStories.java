@@ -84,7 +84,7 @@ public class LeiUserStories {
 		for (IndividualData individual : GEDData.getInstance().individuals) {
 			if (individual.familiesAsSpouse != null && individual.familiesAsSpouse.size() > 1) {
 				for( int i = 0; i < individual.familiesAsSpouse.size() - 1; i++){
-					//with marriage date and divorce date
+					//the former with marriage date and divorce date
 					if(individual.familiesAsSpouse.get(i).marriageDate != null 
 							&& individual.familiesAsSpouse.get(i).divorceDate != null){
 						for(int j = i + 1; j < individual.familiesAsSpouse.size(); j++){

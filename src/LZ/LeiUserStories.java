@@ -80,18 +80,62 @@ public class LeiUserStories {
 	public String US11(){
 		SimpleDateFormat bartDateFormat = new SimpleDateFormat
   				("MM/dd/yyyy");
-		String message = printHead(" US10 : Marriage after 14 ");
-		for (FamilyData family : GEDData.getInstance().families) {
-			if (family.marriageDate != null) {
-				if(family.husband.birth != null && getAge(family.husband.birth, family.marriageDate) < 14){
-					message += "ERROR: FAMILY: US10: "+family.husband.id()+": Marriage before 14 - Birth date: "
-							+ bartDateFormat.format(family.husband.birth) + " Marriage date: "
-							+ bartDateFormat.format(family.marriageDate) + "\n";
-				}
-				if(family.wife.birth != null && getAge(family.wife.birth, family.marriageDate) < 14){
-					message += "ERROR: FAMILY: US10: "+family.wife.id()+": Marriage before 14 - Birth date: "
-							+ bartDateFormat.format(family.wife.birth) + " Marriage date: "
-							+ bartDateFormat.format(family.marriageDate) + "\n";
+		String message = printHead(" US11 : No bigamy ");
+		for (IndividualData individual : GEDData.getInstance().individuals) {
+			if (individual.familiesAsSpouse != null && individual.familiesAsSpouse.size() > 1) {
+				for( int i = 0; i < individual.familiesAsSpouse.size() - 1; i++){
+					//with marriage date and divorce date
+					if(individual.familiesAsSpouse.get(i).marriageDate != null 
+							&& individual.familiesAsSpouse.get(i).divorceDate != null){
+						for(int j = i + 1; j < individual.familiesAsSpouse.size(); j++){
+							if(individual.familiesAsSpouse.get(j).marriageDate != null){
+								if(individual.familiesAsSpouse.get(i).marriageDate.compareTo(individual.familiesAsSpouse.get(j).marriageDate) < 0
+										&& individual.familiesAsSpouse.get(i).divorceDate.compareTo(individual.familiesAsSpouse.get(j).marriageDate) > 0)
+									if(individual.sex.equals("M"))
+										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
+												+ individual.familiesAsSpouse.get(i).wife.id()  + " and " 
+												+ individual.familiesAsSpouse.get(j).wife.id() + "\n";
+									else
+										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
+												+ individual.familiesAsSpouse.get(i).husband.id()  + " and " 
+												+ individual.familiesAsSpouse.get(j).husband.id() + "\n";
+							}
+						}
+					}// only marriage date
+					else if(individual.familiesAsSpouse.get(i).marriageDate != null){
+						for(int j = i + 1; j < individual.familiesAsSpouse.size(); j++){
+							if(individual.familiesAsSpouse.get(j).marriageDate != null 
+									&& individual.familiesAsSpouse.get(j).divorceDate != null){
+								if(individual.familiesAsSpouse.get(j).marriageDate.compareTo(individual.familiesAsSpouse.get(i).marriageDate) < 0
+										&& individual.familiesAsSpouse.get(j).divorceDate.compareTo(individual.familiesAsSpouse.get(i).marriageDate) > 0)
+									if(individual.sex.equals("M"))
+										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
+												+ individual.familiesAsSpouse.get(i).wife.id()  + " and " 
+												+ individual.familiesAsSpouse.get(j).wife.id() + "\n";
+									else
+										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
+												+ individual.familiesAsSpouse.get(i).husband.id()  + " and " 
+												+ individual.familiesAsSpouse.get(j).husband.id() + "\n";
+							}
+						}
+					}// only divorce date
+					else if(individual.familiesAsSpouse.get(i).divorceDate != null){
+						for(int j = i + 1; j < individual.familiesAsSpouse.size(); j++){
+							if(individual.familiesAsSpouse.get(j).marriageDate != null 
+									&& individual.familiesAsSpouse.get(j).divorceDate != null){
+								if(individual.familiesAsSpouse.get(j).marriageDate.compareTo(individual.familiesAsSpouse.get(i).divorceDate) < 0
+										&& individual.familiesAsSpouse.get(j).divorceDate.compareTo(individual.familiesAsSpouse.get(i).divorceDate) > 0)
+									if(individual.sex.equals("M"))
+										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
+												+ individual.familiesAsSpouse.get(i).wife.id()  + " and " 
+												+ individual.familiesAsSpouse.get(j).wife.id() + "\n";
+									else
+										message += "ERROR: INDIVIDUAL: US11: " + individual.id() + " is bigamous with "
+												+ individual.familiesAsSpouse.get(i).husband.id()  + " and " 
+												+ individual.familiesAsSpouse.get(j).husband.id() + "\n";
+							}
+						}
+					}
 				}
 			}
 		}

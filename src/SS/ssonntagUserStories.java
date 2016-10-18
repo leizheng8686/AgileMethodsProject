@@ -220,6 +220,102 @@ public class ssonntagUserStories {
 		//autoPrintIfSet(debugMsg);
 		return message;
 	}
+	
+	
+	/**
+	 * Sprint 2
+	 * 
+	 * US17: No marriages to descendants
+	 *       Parents should not marry any of their descendants
+	 */
+
+	public String US17() {
+		String message = printHead(" US17 :  No marriages to descendants");
+		String debugMsg = "";
+		
+		GEDData gedData = GEDData.getInstance();
+		
+		boolean isMarriedToDescendant = false;
+		
+		// Look at each individual
+		for(IndividualData individual : gedData.individuals) {
+			
+			String spouseId = individual.getSpouseId();
+			
+			debugMsg += "Indiv " + individual.id() + ", spouse = " + spouseId + "\n";
+			
+			// if spouse found (not empty string)
+			if( spouseId.compareTo("") != 0 )
+			{
+				isMarriedToDescendant = isIdInDescendantTree(individual.id(), spouseId);
+			}
+			
+			if( true == isMarriedToDescendant )
+			{
+				// print error
+				message += "ERROR: INDIVIDUAL: " + individual.id() + " is married to " + spouseId
+						+ ", who is a descendant\n";
+			}
+		}
+		
+		autoPrintIfSet(message);
+		// uncomment for debug
+		//autoPrintIfSet(debugMsg);
+		return message;
+	}
+	
+	// Function to determine if search ID (searchId) is preset within the descendant tree of source ID (sourceId)
+	int MAX_DESCENDANT_TREE_RECURSION_DEPTH = 10; // Will traverse down 10 generations max
+	
+	private boolean isIdInDescendantTree(String searchId, String sourceId)
+	{
+		return isIdInDescendantTree(searchId, sourceId, 0);
+	}
+	
+	// Recursive function for above - passes in recursive depth to know when max is reached.
+	private boolean isIdInDescendantTree(String searchId, String sourceId, int recursiveDepth)
+	{
+		boolean idInDescendantTree = false;
+		
+		// get individual record for sourceId
+		IndividualData sourceIndivData = GEDData.getInstance().getIndividualDataFromId(sourceId);
+		
+		for(FamilyData family : sourceIndivData.familiesAsSpouse) {
+			// loop through each child for this family
+			for(String childId : family.childrenStrings) {
+				// if child matches searchId
+				if(childId.compareTo(searchId) == 0)
+				{
+					// match found, return true
+					idInDescendantTree = true;
+				}
+				else
+				{
+					// only search further if not past maximum recursive depth
+					if( MAX_DESCENDANT_TREE_RECURSION_DEPTH > recursiveDepth )
+					{
+						// match not found, continue down this child's decendant tree
+						idInDescendantTree = isIdInDescendantTree(searchId, sourceId, recursiveDepth + 1);
+					}
+				}
+				
+				if(true == idInDescendantTree)
+				{
+					// match found, break out of loop
+					break;
+				}
+			} // for(String childId : family.childrenStrings
+			
+			if(true == idInDescendantTree)
+			{
+				// match found, break out of loop
+				break;
+			}
+		} // for(FamilyData family : sourceIndivData.familiesAsSpouse)
+		
+		return idInDescendantTree;
+		
+	} // private boolean isIdInDescendantTree(String searchId, String sourceId, int recursiveDepth)
 
 	/**
 	 * Helper

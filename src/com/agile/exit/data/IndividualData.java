@@ -52,4 +52,20 @@ public class IndividualData extends BaseData {
 		}
 	}
 	
+	// retrieve the spouse's id for this individual, or and empty string if no match
+	public String getSpouseId(){
+		String spouseId = "";
+		for(FamilyData family : familiesAsSpouse) {
+			if(id().compareTo(family.husband.id()) == 0 )
+			{
+				spouseId = family.wife.id();
+			}
+			else if(id().compareTo(family.wife.id()) == 0 )
+			{
+				spouseId = family.husband.id();
+			}
+		}
+		return spouseId;
+	}
+	
 }

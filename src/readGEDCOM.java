@@ -247,6 +247,7 @@ public class readGEDCOM {
 		ssonntagUserStories ss = new ssonntagUserStories();
 		ss.US25();
 		ss.US26();
+		ss.US17();
 	}
 	
 	//Lei Zheng's User stories

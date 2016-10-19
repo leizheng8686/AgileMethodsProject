@@ -91,18 +91,10 @@ public class EkkasitUserStories extends BaseUserStories{
 			
 			//check over 30
 			if( !isMarry ){
-				Calendar calendarBirth = Calendar.getInstance();
-				calendarBirth.setTime(allIndividual.birth);
-				
-				LocalDateTime now = LocalDateTime.now();
-				LocalDate localTodayDate = LocalDate.of(now.getYear(), now.getMonth(), now.getDayOfMonth() );
-				LocalDate localIndividualDate = LocalDate.of( 
-						calendarBirth.get(Calendar.YEAR), 
-						calendarBirth.get(Calendar.MONTH)+1, 
-						calendarBirth.get(Calendar.DAY_OF_MONTH) 
-					);
-				
-				long year = ChronoUnit.YEARS.between(localIndividualDate, localTodayDate );
+				long year = ChronoUnit.YEARS.between(
+						getCurrentDateTimeByDate(allIndividual.birth), 
+						getCurrentLocalDateTime()
+				);
 				if( year >= 30 ){
 					addIfNotExist(allIndividual,individualNotMarriedOver30);
 				}
@@ -127,6 +119,22 @@ public class EkkasitUserStories extends BaseUserStories{
 				}
 			}
 		}
+		autoPrintIfSet(message);
+		return message;
+	}
+	
+	public String getUs35(){
+		String message = printHead(" US35	List all people in a GEDCOM file who were born in the last 30 days ");
+		for( IndividualData individual : GEDData.getInstance().individuals){
+//			individual.birth
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+	
+	public String getUs36(){
+		String message = printHead(" US36	List all people in a GEDCOM file who died in the last 30 days ");
+		
 		autoPrintIfSet(message);
 		return message;
 	}

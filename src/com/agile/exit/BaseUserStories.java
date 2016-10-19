@@ -1,7 +1,36 @@
 package com.agile.exit;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.Date;
+
 public class BaseUserStories {
 	protected Boolean isAutoPrint;
+	
+	
+	
+	
+	public LocalDate getCurrentLocalDateTime(){
+		LocalDateTime now = LocalDateTime.now();
+		LocalDate localTodayDate = LocalDate.of(now.getYear(), now.getMonth(), now.getDayOfMonth() );
+		return localTodayDate;
+	}
+	
+	public LocalDate getCurrentDateTimeByDate(Date date){
+		Calendar calendarBirth = Calendar.getInstance();
+		calendarBirth.setTime(date);
+		
+		LocalDate localIndividualDate = LocalDate.of( 
+				calendarBirth.get(Calendar.YEAR), 
+				calendarBirth.get(Calendar.MONTH)+1, 
+				calendarBirth.get(Calendar.DAY_OF_MONTH) 
+			);
+		return localIndividualDate;
+	}
+	
+	
 	/**
 	 * Helper
 	 */

@@ -33,9 +33,6 @@ ID		Name
 @I29@ 	Jane
 @I30@ 	Trish
 @I31@ 	Chris
-<<<<<<< Updated upstream
 @I32@ 	Lala
 @I33@ 	La
-=======
 @I21@ 	Ekkasit
->>>>>>> Stashed changes

@@ -485,4 +485,15 @@
 1 DIV
 2 DATE 13 SEP 1965
 0 NOTE ******************************
+0 NOTE ********************************************
+0 NOTE *** US35 output
+0 @I21@ INDI
+1 NAME Ekkasit /JohnUS35/
+2 GIVN AA
+2 SURN BB
+1 SEX F
+1 BIRT
+2 DATE 2 OCT 2016
+1 DEAT Y
+2 DATE 3 OCT 2016
 0 TRLR

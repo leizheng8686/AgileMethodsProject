@@ -165,7 +165,7 @@
 1 BIRT
 2 DATE 2 FEB 1986
 1 BIRT
-2 DATE 19 OCT 1986
+2 DATE 2 FEB 1986
 0 NOTE ********************************************
 0 NOTE *** US17 Error case 1
 0 NOTE Indiv I22 married to I23, but I23 is a child of I22
@@ -374,4 +374,13 @@
 1 DIV
 2 DATE 13 SEP 1965
 0 NOTE ******************************
+0 NOTE ********************************************
+0 NOTE *** US35 output
+0 @I21@ INDI
+1 NAME Ekkasit /JohnUS35/
+1 SEX F
+1 BIRT
+2 DATE 2 OCT 2016
+1 DEAT Y
+2 DATE 3 OCT 2016
 0 TRLR

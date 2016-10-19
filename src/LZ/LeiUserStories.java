@@ -314,7 +314,7 @@ public class LeiUserStories {
 		d2.set(java.util.Calendar.MINUTE, 0);   
 		d2.set(java.util.Calendar.SECOND, 0);   
 		//get days difference   
-		return d1.get(Calendar.MONTH) - d2.get(Calendar.MONTH);
+		return d2.get(Calendar.MONTH) - d1.get(Calendar.MONTH);
         
    } 
 	
@@ -367,8 +367,8 @@ public class LeiUserStories {
 	
 	public static void main(String args[]){
 		LeiUserStories l = new LeiUserStories();
-		Date d1 = new Date(2000,9,3);
-		Date d2 = new Date(2000,9,6);
+		Date d1 = new Date(2000,7,3);
+		Date d2 = new Date(2000,3,6);
 		System.out.println(l.getDaysDiff(d1, d2));
 		System.out.println(l.getMonthsDiff(d1, d2));
 	}

@@ -199,11 +199,7 @@ public class LeiUserStories {
 							message += "ERROR: INDIVIDUAL: US12: Father : "+family.husband.id()+" (Birth: " 
 									+ bartDateFormat.format(family.husband.birth) + ") is too old to give birth to the Child : "
 									+ indi.id() + " (Birth: " + bartDateFormat.format(indi.birth) + ")\n";
-<<<<<<< Updated upstream
-						if(family.wife != null && family.wife.birth != null && getAge(family.wife.birth, indi.birth) >= 60)
-=======
 						if(family.wife.birth != null && getYearsDiff(family.wife.birth, indi.birth) >= 60)
->>>>>>> Stashed changes
 							message += "ERROR: INDIVIDUAL: US12: Mother : "+family.wife.id()+" (Birth: " 
 									+ bartDateFormat.format(family.wife.birth) + ") is too old to give birth to the Child : "
 									+ indi.id() + " (Birth: " + bartDateFormat.format(indi.birth) + ")\n";
@@ -299,30 +295,53 @@ public class LeiUserStories {
         return age;  
     } 
 	
-//	public int getDaysDiff(Date date1, Date date2) { 
-//	    
-//		java.util.Calendar calst = java.util.Calendar.getInstance();   
-//		java.util.Calendar caled = java.util.Calendar.getInstance();
-//		if(date1.compareTo(date2) < 0){
-//			calst.setTime(date1);   
-//			caled.setTime(date2);   
-//		}else{
-//			calst.setTime(date2);   
-//			caled.setTime(date1);
-//		}
-//		//set time   
-//		calst.set(java.util.Calendar.HOUR_OF_DAY, 0);   
-//		calst.set(java.util.Calendar.MINUTE, 0);   
-//		calst.set(java.util.Calendar.SECOND, 0);   
-//		caled.set(java.util.Calendar.HOUR_OF_DAY, 0);   
-//		caled.set(java.util.Calendar.MINUTE, 0);   
-//		caled.set(java.util.Calendar.SECOND, 0);   
-//		//get days difference   
-//		int days = ((int) (caled.getTime().getTime() / 1000) - (int) (calst   
-//		        .getTime().getTime() / 1000)) / 3600 / 24;   
-//		 
-//		return days;   
-//   } 
+	public int getMonthsDiff(Date date1, Date date2) { 
+	    
+		java.util.Calendar d1 = java.util.Calendar.getInstance();   
+		java.util.Calendar d2 = java.util.Calendar.getInstance();
+		if(date1.compareTo(date2) < 0){
+			d1.setTime(date1);   
+			d2.setTime(date2);   
+		}else{
+			d1.setTime(date2);   
+			d2.setTime(date1);
+		}
+		//set time   
+		d1.set(java.util.Calendar.HOUR_OF_DAY, 0);   
+		d1.set(java.util.Calendar.MINUTE, 0);   
+		d1.set(java.util.Calendar.SECOND, 0);   
+		d2.set(java.util.Calendar.HOUR_OF_DAY, 0);   
+		d2.set(java.util.Calendar.MINUTE, 0);   
+		d2.set(java.util.Calendar.SECOND, 0);   
+		//get days difference   
+		return d1.get(Calendar.MONTH) - d2.get(Calendar.MONTH);
+        
+   } 
+	
+	public int getDaysDiff(Date date1, Date date2) { 
+	    
+		java.util.Calendar d1 = java.util.Calendar.getInstance();   
+		java.util.Calendar d2 = java.util.Calendar.getInstance();
+		if(date1.compareTo(date2) < 0){
+			d1.setTime(date1);   
+			d2.setTime(date2);   
+		}else{
+			d1.setTime(date2);   
+			d2.setTime(date1);
+		}
+		//set time   
+		d1.set(java.util.Calendar.HOUR_OF_DAY, 0);   
+		d1.set(java.util.Calendar.MINUTE, 0);   
+		d1.set(java.util.Calendar.SECOND, 0);   
+		d2.set(java.util.Calendar.HOUR_OF_DAY, 0);   
+		d2.set(java.util.Calendar.MINUTE, 0);   
+		d2.set(java.util.Calendar.SECOND, 0);   
+		//get days difference   
+		int days = ((int) (d2.getTime().getTime() / 1000) - (int) (d1   
+		        .getTime().getTime() / 1000)) / 3600 / 24;   
+		 
+		return days;   
+   } 
 	
 	private void autoPrintIfSet(String message){
 		if(isAutoPrint){
@@ -348,7 +367,9 @@ public class LeiUserStories {
 	
 	public static void main(String args[]){
 		LeiUserStories l = new LeiUserStories();
-		
-//		System.out.println(l.getDaysDiff(date1, date2));
+		Date d1 = new Date(2000,9,3);
+		Date d2 = new Date(2000,9,6);
+		System.out.println(l.getDaysDiff(d1, d2));
+		System.out.println(l.getMonthsDiff(d1, d2));
 	}
 }

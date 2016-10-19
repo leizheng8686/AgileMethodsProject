@@ -164,11 +164,20 @@ public class GEDData {
 	        famTableHeader.insert(45, "Wife ID");
 	        famTableHeader.insert(60, "Wife Name");
 	        
+
 	        famTableInfo.insert(0, family.id());
-	        famTableInfo.insert(15, family.husband.id());
-	        famTableInfo.insert(30, family.husband.name);
-	        famTableInfo.insert(45, family.wife.id());
-	        famTableInfo.insert(60, family.wife.name);
+	        
+	        if(null != family.husband)
+	        {
+	        	famTableInfo.insert(15, family.husband.id());
+	        	famTableInfo.insert(30, family.husband.name);
+	        }
+	        
+	        if(null != family.wife)
+	        {
+	        	famTableInfo.insert(45, family.wife.id());
+	        	famTableInfo.insert(60, family.wife.name);
+	        }
 	        
 	        int index = 60;
 	        int childNumber = 1;

@@ -199,7 +199,7 @@ public class LeiUserStories {
 							message += "ERROR: INDIVIDUAL: US12: Father : "+family.husband.id()+" (Birth: " 
 									+ bartDateFormat.format(family.husband.birth) + ") is too old to give birth to the Child : "
 									+ indi.id() + " (Birth: " + bartDateFormat.format(indi.birth) + ")\n";
-						if(family.wife.birth != null && getAge(family.wife.birth, indi.birth) >= 60)
+						if(family.wife != null && family.wife.birth != null && getAge(family.wife.birth, indi.birth) >= 60)
 							message += "ERROR: INDIVIDUAL: US12: Mother : "+family.wife.id()+" (Birth: " 
 									+ bartDateFormat.format(family.wife.birth) + ") is too old to give birth to the Child : "
 									+ indi.id() + " (Birth: " + bartDateFormat.format(indi.birth) + ")\n";

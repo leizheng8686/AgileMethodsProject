@@ -80,9 +80,12 @@ public class EkkasitUserStories extends BaseUserStories{
 			boolean isMarry = false;
 			//check married
 			for( FamilyData family : GEDData.getInstance().families ){
-				if( family.wife.id() == allIndividual.id() || family.husband.id() == allIndividual.id() ){
-					isMarry = true;
-					break;
+				if( null != family.wife && null != family.husband)
+				{
+					if( family.wife.id() == allIndividual.id() || family.husband.id() == allIndividual.id() ){
+						isMarry = true;
+						break;
+					}
 				}
 			}
 			

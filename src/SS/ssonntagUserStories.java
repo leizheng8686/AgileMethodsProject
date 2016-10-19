@@ -230,7 +230,7 @@ public class ssonntagUserStories {
 	 */
 
 	public String US17() {
-		String message = printHead(" US17 :  No marriages to descendants");
+		String message = printHead(" US17 :  No marriages to descendants ");
 		String debugMsg = "";
 		
 		GEDData gedData = GEDData.getInstance();
@@ -264,6 +264,46 @@ public class ssonntagUserStories {
 		return message;
 	}
 	
+	/**
+	 * Sprint 2
+	 * 
+	 * US18: Siblings should not marry
+	 *       Siblings should not marry one another
+	 */
+
+	public String US18() {
+		String message = printHead(" US18 :  Siblings should not marry ");
+		String debugMsg = "";
+		
+		GEDData gedData = GEDData.getInstance();
+		
+		// Look at each individual
+		for(IndividualData individual : gedData.individuals) {
+			
+			String spouseId = individual.getSpouseId();
+			if(spouseId.compareTo("") != 0)
+			{
+				IndividualData spouseIndiv = gedData.getIndividualDataFromId(spouseId);
+				
+				// if if individual and spouse have the same familyAsChild ID
+				if( null != individual.familyAsChild && null != spouseIndiv.familyAsChild)
+				{
+					if( individual.familyAsChild.id().compareTo(spouseIndiv.familyAsChild.id()) == 0 )
+					{
+						// print error
+						message += "ERROR: INDIVIDUAL: " + individual.id() + " is married to " + spouseId
+								+ ", who is a sibling\n";
+					}
+				}
+			}
+		}
+		
+		autoPrintIfSet(message);
+		// uncomment for debug
+		//autoPrintIfSet(debugMsg);
+		return message;
+	}
+	
 	// Function to determine if search ID (searchId) is preset within the descendant tree of source ID (sourceId)
 	int MAX_DESCENDANT_TREE_RECURSION_DEPTH = 10; // Will traverse down 10 generations max
 	
@@ -275,6 +315,9 @@ public class ssonntagUserStories {
 	// Recursive function for above - passes in recursive depth to know when max is reached.
 	private boolean isIdInDescendantTree(String searchId, String sourceId, int recursiveDepth)
 	{
+		//System.out.println("isIdInDescendantTree: searchId: " + searchId 
+		//		+ ", sourceId: " + sourceId + "\n");
+
 		boolean idInDescendantTree = false;
 		
 		// get individual record for sourceId
@@ -295,7 +338,7 @@ public class ssonntagUserStories {
 					if( MAX_DESCENDANT_TREE_RECURSION_DEPTH > recursiveDepth )
 					{
 						// match not found, continue down this child's decendant tree
-						idInDescendantTree = isIdInDescendantTree(searchId, sourceId, recursiveDepth + 1);
+						idInDescendantTree = isIdInDescendantTree(searchId, childId, recursiveDepth + 1);
 					}
 				}
 				

@@ -166,6 +166,84 @@
 2 DATE 2 FEB 1986
 1 BIRT
 2 DATE 2 FEB 1986
+0 NOTE ********************************************
+0 NOTE *** US17 Error case 1
+0 NOTE Indiv I22 married to I23, but I23 is a child of I22
+0 @I22@ INDI
+1 NAME Robert /Smith/
+1 SEX M
+1 BIRT
+2 DATE 14 JAN 1980
+1 FAMS @F9@
+0 @I23@ INDI
+1 NAME Roberta /Smith/
+1 SEX F
+1 BIRT
+2 DATE 19 JAN 1997
+1 FAMS @F9@
+1 FAMC @F9@
+0 NOTE ********************************************
+0 NOTE ********************************************
+0 NOTE *** US17 Error case 2
+0 NOTE Indiv I24 married to grandchild, I26
+0 @I24@ INDI
+1 NAME Matt /Jones/
+1 SEX M
+1 BIRT
+2 DATE 14 JAN 1955
+1 FAMS @F10@
+1 FAMS @F12@
+0 @I25@ INDI
+1 NAME Alexis /Adams/
+1 SEX F
+1 BIRT
+2 DATE 19 JAN 1975
+1 FAMS @F11@ 
+1 FAMC @F10@
+0 @I26@ INDI
+1 NAME Monica /Adams/
+1 SEX F
+1 BIRT
+2 DATE 19 JAN 1995
+1 FAMS @F12@ 
+1 FAMC @F11@
+0 @I27@ INDI
+1 NAME George /Adams/
+1 SEX M
+1 BIRT
+2 DATE 19 JAN 1975
+1 FAMS @F11@ 
+0 NOTE ********************************
+0 NOTE ********************************
+0 NOTE *** US18 Error case 1
+0 NOTE Indiv I30 married to sibling I31
+0 @I28@ INDI
+1 NAME Doug /Henry/
+1 SEX M
+1 BIRT
+2 DATE 14 JAN 1955
+1 FAMS @F13@
+0 @I29@ INDI
+1 NAME Jane /Domitt/
+1 SEX F
+1 BIRT
+2 DATE 19 JAN 1955
+1 FAMS @F13@ 
+0 @I30@ INDI
+1 NAME Trish /Henry/
+1 SEX F
+1 BIRT
+2 DATE 19 JAN 1975
+1 FAMS @F14@ 
+1 FAMC @F13@
+0 @I31@ INDI
+1 NAME Chris /Henry/
+1 SEX M
+1 BIRT
+2 DATE 19 JAN 1977
+1 FAMS @F14@ 
+1 FAMC @F13@
+0 NOTE *******************************
 0 @F1@ FAM
 1 HUSB @I1@
 1 WIFE @I14@
@@ -227,4 +305,40 @@
 2 DATE 21 MAY 1930
 1 DIV
 2 DATE 13 SEP 1920
+0 NOTE ********************************************
+0 NOTE **** US17 Error case 1 No marriages to descendants
+0 NOTE **** I22 married to child, I23
+0 @F9@ FAM
+1 HUSB @I22@
+1 WIFE @I23@
+1 CHIL @I23@
+1 MARR
+2 DATE 3 JUN 2016
+0 NOTE ********************************************
+0 NOTE ********************************************
+0 NOTE **** US17 Error case 2 No marriages to descendants
+0 NOTE **** I24 married to grandchild, I26
+0 @F10@ FAM
+1 HUSB @I24@
+1 CHIL @I25@
+0 @F11@ FAM
+1 HUSB @I27@
+1 WIFE @I25@
+1 CHIL @I26@
+0 @F12@ FAM
+1 HUSB @I24@
+1 WIFE @I26@
+0 NOTE ********************************
+0 NOTE ********************************
+0 NOTE *** US18 Error case 1
+0 NOTE Indiv I30 married to sibling I31
+0 @F13@ FAM
+1 HUSB @I28@
+1 WIFE @I29@
+1 CHIL @I30@
+1 CHIL @I31@
+0 @F14@ FAM
+1 HUSB @I30@
+1 WIFE @I31@
+0 NOTE ******************************
 0 TRLR

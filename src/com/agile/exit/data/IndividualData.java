@@ -56,13 +56,16 @@ public class IndividualData extends BaseData {
 	public String getSpouseId(){
 		String spouseId = "";
 		for(FamilyData family : familiesAsSpouse) {
-			if(id().compareTo(family.husband.id()) == 0 )
+			if(null != family.husband && null != family.wife)
 			{
-				spouseId = family.wife.id();
-			}
-			else if(id().compareTo(family.wife.id()) == 0 )
-			{
-				spouseId = family.husband.id();
+				if(id().compareTo(family.husband.id()) == 0 )
+				{
+					spouseId = family.wife.id();
+				}
+				else if(id().compareTo(family.wife.id()) == 0 )
+				{
+					spouseId = family.husband.id();
+				}
 			}
 		}
 		return spouseId;

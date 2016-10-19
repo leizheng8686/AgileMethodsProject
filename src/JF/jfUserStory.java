@@ -83,7 +83,7 @@ public class jfUserStory {
 								+ "\n";
 					}
 				}
-				if (individual.name.equals(family.wife.name)) {
+				if ( (null != family.wife) && (individual.name.equals(family.wife.name))) {
 					if (family.marriageDate != null
 							&& individual.birth != null
 							&& family.marriageDate.compareTo(individual.birth) < 0) {

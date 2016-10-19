@@ -57,12 +57,12 @@ public class LeiUserStories {
 		String message = printHead(" US10 : Marriage after 14 ");
 		for (FamilyData family : GEDData.getInstance().families) {
 			if (family.marriageDate != null) {
-				if(family.husband.birth != null && getAge(family.husband.birth, family.marriageDate) < 14){
+				if(family.husband.birth != null && getYearsDiff(family.husband.birth, family.marriageDate) < 14){
 					message += "ERROR: FAMILY: US10: "+family.husband.id()+": Marriage before 14 - Birth date: "
 							+ bartDateFormat.format(family.husband.birth) + " Marriage date: "
 							+ bartDateFormat.format(family.marriageDate) + "\n";
 				}
-				if(family.wife.birth != null && getAge(family.wife.birth, family.marriageDate) < 14){
+				if(family.wife.birth != null && getYearsDiff(family.wife.birth, family.marriageDate) < 14){
 					message += "ERROR: FAMILY: US10: "+family.wife.id()+": Marriage before 14 - Birth date: "
 							+ bartDateFormat.format(family.wife.birth) + " Marriage date: "
 							+ bartDateFormat.format(family.marriageDate) + "\n";
@@ -195,17 +195,47 @@ public class LeiUserStories {
 			if (family.children != null) {
 				for(IndividualData indi : family.children)
 					if(indi.birth != null){
-						if(family.husband.birth != null && getAge(family.husband.birth, indi.birth) >= 80)
+						if(family.husband.birth != null && getYearsDiff(family.husband.birth, indi.birth) >= 80)
 							message += "ERROR: INDIVIDUAL: US12: Father : "+family.husband.id()+" (Birth: " 
 									+ bartDateFormat.format(family.husband.birth) + ") is too old to give birth to the Child : "
 									+ indi.id() + " (Birth: " + bartDateFormat.format(indi.birth) + ")\n";
+<<<<<<< Updated upstream
 						if(family.wife != null && family.wife.birth != null && getAge(family.wife.birth, indi.birth) >= 60)
+=======
+						if(family.wife.birth != null && getYearsDiff(family.wife.birth, indi.birth) >= 60)
+>>>>>>> Stashed changes
 							message += "ERROR: INDIVIDUAL: US12: Mother : "+family.wife.id()+" (Birth: " 
 									+ bartDateFormat.format(family.wife.birth) + ") is too old to give birth to the Child : "
 									+ indi.id() + " (Birth: " + bartDateFormat.format(indi.birth) + ")\n";
 					}
 			}
 		}
+		autoPrintIfSet(message);
+		return message;
+	}
+	
+	/* TODO
+	 * US13 : Siblings spacing
+	 * Birth dates of siblings should be more than 8 months apart or less than 2 days apart
+	 */
+	public String US13(){
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat
+  				("MM/dd/yyyy");
+		String message = printHead(" US13 : Siblings spacing ");
+		
+		autoPrintIfSet(message);
+		return message;
+	}
+	
+	/* TODO
+	 * US14 : Multiple births less than 5
+	 * No more than five siblings should be born at the same time
+	 */
+	public String US14(){
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat
+  				("MM/dd/yyyy");
+		String message = printHead(" US14 : Multiple births less than 5 ");
+		
 		autoPrintIfSet(message);
 		return message;
 	}
@@ -240,7 +270,7 @@ public class LeiUserStories {
     } 
 	
 	//calculate the age from birthday to that day
-	public  int getAge(Date birthDay, Date thatDay) {  
+	public  int getYearsDiff(Date birthDay, Date thatDay) {  
         Calendar cal = Calendar.getInstance();  
         cal.setTime(thatDay);
         
@@ -269,6 +299,31 @@ public class LeiUserStories {
         return age;  
     } 
 	
+//	public int getDaysDiff(Date date1, Date date2) { 
+//	    
+//		java.util.Calendar calst = java.util.Calendar.getInstance();   
+//		java.util.Calendar caled = java.util.Calendar.getInstance();
+//		if(date1.compareTo(date2) < 0){
+//			calst.setTime(date1);   
+//			caled.setTime(date2);   
+//		}else{
+//			calst.setTime(date2);   
+//			caled.setTime(date1);
+//		}
+//		//set time   
+//		calst.set(java.util.Calendar.HOUR_OF_DAY, 0);   
+//		calst.set(java.util.Calendar.MINUTE, 0);   
+//		calst.set(java.util.Calendar.SECOND, 0);   
+//		caled.set(java.util.Calendar.HOUR_OF_DAY, 0);   
+//		caled.set(java.util.Calendar.MINUTE, 0);   
+//		caled.set(java.util.Calendar.SECOND, 0);   
+//		//get days difference   
+//		int days = ((int) (caled.getTime().getTime() / 1000) - (int) (calst   
+//		        .getTime().getTime() / 1000)) / 3600 / 24;   
+//		 
+//		return days;   
+//   } 
+	
 	private void autoPrintIfSet(String message){
 		if(isAutoPrint){
 			System.out.println(message);
@@ -291,4 +346,9 @@ public class LeiUserStories {
 		return line;
 	}
 	
+	public static void main(String args[]){
+		LeiUserStories l = new LeiUserStories();
+		
+//		System.out.println(l.getDaysDiff(date1, date2));
+	}
 }

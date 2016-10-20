@@ -83,7 +83,8 @@ public class jfUserStory {
 								+ "\n";
 					}
 				}
-				if ( (null != family.wife) && (individual.name.equals(family.wife.name))) {
+				if ((null != family.wife)
+						&& (individual.name.equals(family.wife.name))) {
 					if (family.marriageDate != null
 							&& individual.birth != null
 							&& family.marriageDate.compareTo(individual.birth) < 0) {
@@ -125,21 +126,80 @@ public class jfUserStory {
 		SimpleDateFormat bartDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		String message = printHead(" US04 : Marriage before divorce ");
 		for (FamilyData family : GEDData.getInstance().families) {
-					if (family.marriageDate != null
-							&& family.divorceDate != null
-							&& family.marriageDate.compareTo(family.divorceDate) > 0) {
-						message += "ERROR: FAMILY: US04: " + family.id()
-								+ ": divorce date:"
-								+ bartDateFormat.format(family.divorceDate)
-								+ " occur before marriage date"
-								+ bartDateFormat.format(family.marriageDate)
-								+ "\n";
-					}
-				}
+			if (family.marriageDate != null && family.divorceDate != null
+					&& family.marriageDate.compareTo(family.divorceDate) > 0) {
+				message += "ERROR: FAMILY: US04: " + family.id()
+						+ ": divorce date:"
+						+ bartDateFormat.format(family.divorceDate)
+						+ " occur before marriage date"
+						+ bartDateFormat.format(family.marriageDate) + "\n";
+			}
+		}
 		autoPrintIfSet(message);
 		return message;
 	}
-	
+
+	/**
+	 * Sprint3
+	 */
+
+	public String getUs05() {
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		String message = printHead(" US05 : Marriage before death ");
+		for (FamilyData family : GEDData.getInstance().families) {
+			if (family.marriageDate != null
+					&& family.husband.dateOfDeath != null
+					&& family.wife.dateOfDeath != null) {
+				if (family.marriageDate.compareTo(family.husband.dateOfDeath) > 0) {
+					message += "ERROR: FAMILY: US05: " + family.id()
+							+ ": marriage date:"
+							+ bartDateFormat.format(family.marriageDate)
+							+ " occur after husband death date"
+							+ bartDateFormat.format(family.husband.dateOfDeath)
+							+ "\n";
+				} else if (family.marriageDate
+						.compareTo(family.wife.dateOfDeath) > 0) {
+					message += "ERROR: FAMILY: US05: " + family.id()
+							+ ": marriage date:"
+							+ bartDateFormat.format(family.marriageDate)
+							+ " occur after wife death date"
+							+ bartDateFormat.format(family.wife.dateOfDeath)
+							+ "\n";
+				}
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+
+	public String getUs06() {
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		String message = printHead(" US06 : Divorce before death ");
+		for (FamilyData family : GEDData.getInstance().families) {
+			if (family.divorceDate != null
+					&& family.husband.dateOfDeath != null
+					&& family.wife.dateOfDeath != null) {
+				if (family.divorceDate.compareTo(family.husband.dateOfDeath) > 0) {
+					message += "ERROR: FAMILY: US05: " + family.id()
+							+ ": Divorce date:"
+							+ bartDateFormat.format(family.divorceDate)
+							+ " occur after husband death date"
+							+ bartDateFormat.format(family.husband.dateOfDeath)
+							+ "\n";
+				} else if (family.divorceDate
+						.compareTo(family.wife.dateOfDeath) > 0) {
+					message += "ERROR: FAMILY: US05: " + family.id()
+							+ ": Divorce date:"
+							+ bartDateFormat.format(family.divorceDate)
+							+ " occur after wife death date"
+							+ bartDateFormat.format(family.wife.dateOfDeath)
+							+ "\n";
+				}
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
 	/**
 	 * Helper
 	 */

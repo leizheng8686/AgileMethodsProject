@@ -239,7 +239,8 @@ public class readGEDCOM {
 		jf.getUs02();
 		jf.getUs03();
 		jf.getUs04();
-		
+	    jf.getUs05();	
+	    jf.getUs06();	
 		//call lei's user stories
 		leiUS();
 		

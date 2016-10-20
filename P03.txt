@@ -243,6 +243,28 @@
 2 DATE 19 JAN 1977
 1 FAMS @F14@ 
 1 FAMC @F13@
+0 NOTE ********************************************
+0 NOTE *** US5 Error case 1 death before marriage
+0 NOTE *** New create one
+0 @I32@ INDI
+1 NAME Lala /Wuwu/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1930
+1 DEAT Y
+2 DATE 1 JAN 1950
+1 FAMS @F15@
+0 NOTE ********************************************
+0 NOTE *** US5 Error case 1 death before marriage
+0 NOTE *** New create one
+0 @I33@ INDI
+1 NAME La /Wu/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1930
+1 DEAT Y
+2 DATE 1 JAN 1970
+1 FAMS @F15@
 0 NOTE *******************************
 0 @F1@ FAM
 1 HUSB @I1@
@@ -340,5 +362,16 @@
 0 @F14@ FAM
 1 HUSB @I30@
 1 WIFE @I31@
+0 NOTE ********************************
+0 NOTE ********************************
+0 NOTE *** US5 Error case 1
+0 NOTE *** New created family
+0 @F15@ FAM
+1 HUSB @I32@
+1 WIFE @I33@
+1 MARR
+2 DATE 21 MAY 1960
+1 DIV
+2 DATE 13 SEP 1965
 0 NOTE ******************************
 0 TRLR

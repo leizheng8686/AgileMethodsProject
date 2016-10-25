@@ -3,6 +3,7 @@ package LZ;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 import com.agile.exit.data.*;
 
@@ -195,11 +196,11 @@ public class LeiUserStories {
 			if (family.children != null) {
 				for(IndividualData indi : family.children)
 					if(indi.birth != null){
-						if(family.husband.birth != null && getYearsDiff(family.husband.birth, indi.birth) >= 80)
+						if(family.husband != null && family.husband.birth != null && getYearsDiff(family.husband.birth, indi.birth) >= 80)
 							message += "ERROR: INDIVIDUAL: US12: Father : "+family.husband.id()+" (Birth: " 
 									+ bartDateFormat.format(family.husband.birth) + ") is too old to give birth to the Child : "
 									+ indi.id() + " (Birth: " + bartDateFormat.format(indi.birth) + ")\n";
-						if(family.wife.birth != null && getYearsDiff(family.wife.birth, indi.birth) >= 60)
+						if(family.wife != null && family.wife.birth != null && getYearsDiff(family.wife.birth, indi.birth) >= 60)
 							message += "ERROR: INDIVIDUAL: US12: Mother : "+family.wife.id()+" (Birth: " 
 									+ bartDateFormat.format(family.wife.birth) + ") is too old to give birth to the Child : "
 									+ indi.id() + " (Birth: " + bartDateFormat.format(indi.birth) + ")\n";
@@ -210,7 +211,7 @@ public class LeiUserStories {
 		return message;
 	}
 	
-	/* TODO
+	/* 
 	 * US13 : Siblings spacing
 	 * Birth dates of siblings should be more than 8 months apart or less than 2 days apart
 	 */
@@ -218,7 +219,24 @@ public class LeiUserStories {
 		SimpleDateFormat bartDateFormat = new SimpleDateFormat
   				("MM/dd/yyyy");
 		String message = printHead(" US13 : Siblings spacing ");
-		
+		for (FamilyData family : GEDData.getInstance().families) {
+			if (family.children.size() > 1) {
+				for(int i = 0; i < family.children.size() - 1; i++){
+					if(family.children.get(i).birth != null){
+						for(int j = i+1; j < family.children.size(); j++){
+							if(family.children.get(j).birth != null){
+								if(getMonthsDiff(family.children.get(i).birth, family.children.get(j).birth) < 8 
+										&& getDaysDiff(family.children.get(i).birth, family.children.get(j).birth) > 2){
+									message += "ERROR: INDIVIDUAL: US13: sibling : "+ "There is no siblings space bewteen " 
+											+ family.children.get(i).id()+" (Birth: " + bartDateFormat.format(family.children.get(i).birth) 
+											+ ") and  " + family.children.get(j).id() + " (Birth: " + bartDateFormat.format(family.children.get(j).birth) + ")\n";
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 		autoPrintIfSet(message);
 		return message;
 	}
@@ -231,7 +249,16 @@ public class LeiUserStories {
 		SimpleDateFormat bartDateFormat = new SimpleDateFormat
   				("MM/dd/yyyy");
 		String message = printHead(" US14 : Multiple births less than 5 ");
-		
+		for(FamilyData family : GEDData.getInstance().families){
+			if(family.children.size() > 4){
+				HashMap<Date, Integer> map = new HashMap<Date, Integer>();
+				for(IndividualData child : family.children){
+					if(child.birth != null){
+						
+					}
+				}
+			}
+		}
 		autoPrintIfSet(message);
 		return message;
 	}
@@ -299,6 +326,7 @@ public class LeiUserStories {
 	    
 		java.util.Calendar d1 = java.util.Calendar.getInstance();   
 		java.util.Calendar d2 = java.util.Calendar.getInstance();
+		
 		if(date1.compareTo(date2) < 0){
 			d1.setTime(date1);   
 			d2.setTime(date2);   
@@ -314,7 +342,7 @@ public class LeiUserStories {
 		d2.set(java.util.Calendar.MINUTE, 0);   
 		d2.set(java.util.Calendar.SECOND, 0);   
 		//get days difference   
-		return d2.get(Calendar.MONTH) - d1.get(Calendar.MONTH);
+		return (d2.get(Calendar.YEAR) - d1.get(Calendar.YEAR)) * 12 + d2.get(Calendar.MONTH) - d1.get(Calendar.MONTH);
         
    } 
 	
@@ -368,7 +396,7 @@ public class LeiUserStories {
 	public static void main(String args[]){
 		LeiUserStories l = new LeiUserStories();
 		Date d1 = new Date(2000,7,3);
-		Date d2 = new Date(2000,3,6);
+		Date d2 = new Date(2001,3,6);
 		System.out.println(l.getDaysDiff(d1, d2));
 		System.out.println(l.getMonthsDiff(d1, d2));
 	}

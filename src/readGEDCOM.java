@@ -243,6 +243,7 @@ public class readGEDCOM {
 		jf.getUs04();
 	    jf.getUs05();	
 	    jf.getUs06();	
+	    
 		//call lei's user stories
 		leiUS();
 		
@@ -261,6 +262,8 @@ public class readGEDCOM {
 		lz.US10();
 		lz.US11();
 		lz.US12();
+		lz.US13();
+		lz.US14();
 	}
 
 	public static void main(String args[]) {

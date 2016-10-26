@@ -1,9 +1,7 @@
 package LZ;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 import com.agile.exit.data.*;
 
@@ -251,10 +249,30 @@ public class LeiUserStories {
 		String message = printHead(" US14 : Multiple births less than 5 ");
 		for(FamilyData family : GEDData.getInstance().families){
 			if(family.children.size() > 4){
-				HashMap<Date, Integer> map = new HashMap<Date, Integer>();
+				HashMap<Date, List<String>> map = new HashMap<Date, List<String>>();
 				for(IndividualData child : family.children){
 					if(child.birth != null){
-						
+						if(!map.containsKey(child.birth)){
+							List<String> list = new ArrayList<String>();
+							list.add(child.id());
+							map.put(child.birth, list);
+						}else{
+							map.get(child.birth).add(child.id());
+						}
+					}
+				}
+				Iterator iter = map.entrySet().iterator();
+				while (iter.hasNext()) {
+					Map.Entry entry = (Map.Entry) iter.next();
+					Date key = (Date) entry.getKey();
+					List<String> val = (List<String>) entry.getValue();
+					if(val.size() > 4){
+						String ids = new String();
+						for(String id : val){
+							ids += " " + id; 
+						}
+						message += "ERROR: INDIVIDUAL: US14: These children : " + ids 
+								+ " are born in the same day: " + bartDateFormat.format(key) + "\n";
 					}
 				}
 			}

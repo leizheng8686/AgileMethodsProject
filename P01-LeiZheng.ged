@@ -370,6 +370,53 @@
 2 DATE 1 JAN 1970
 1 FAMS @F15@
 0 NOTE *******************************
+0 NOTE *****Lei's individuals*********
+0 @I80@ INDI
+1 NAME Jiff /Taylor/
+2 GIVN Jiff
+2 SURN Taylor
+2 _MARNM Taylor
+1 SEX M
+1 BIRT
+2 DATE 8 JUL 1960
+1 FAMC @F4@
+0 @I81@ INDI
+1 NAME Jiff1 /Taylor/
+2 GIVN Jiff1
+2 SURN Taylor
+2 _MARNM Taylor
+1 SEX M
+1 BIRT
+2 DATE 8 JUL 1960
+1 FAMC @F4@
+0 @I82@ INDI
+1 NAME Jiff2 /Taylor/
+2 GIVN Jiff2
+2 SURN Taylor
+2 _MARNM Taylor
+1 SEX M
+1 BIRT
+2 DATE 8 JUL 1960
+1 FAMC @F4@
+0 @I83@ INDI
+1 NAME Jiff3 /Taylor/
+2 GIVN Jiff3
+2 SURN Taylor
+2 _MARNM Taylor
+1 SEX M
+1 BIRT
+2 DATE 8 JUL 1960
+1 FAMC @F4@
+0 @I84@ INDI
+1 NAME Jiff4 /Taylor/
+2 GIVN Jiff4
+2 SURN Taylor
+2 _MARNM Taylor
+1 SEX M
+1 BIRT
+2 DATE 8 JUL 1960
+1 FAMC @F4@
+0 NOTE ************END****************
 0 @F1@ FAM
 1 HUSB @I1@
 1 WIFE @I14@
@@ -397,6 +444,11 @@
 1 HUSB @I12@
 1 WIFE @I13@
 1 CHIL @I3@
+1 CHIL @I80@
+1 CHIL @I81@
+1 CHIL @I82@
+1 CHIL @I83@
+1 CHIL @I84@
 1 MARR
 2 DATE 29 DEC 1955
 1 _CURRENT Y

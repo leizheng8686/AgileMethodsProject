@@ -156,8 +156,8 @@ public class GEDData {
             	  	  
 		for (FamilyData family : families) {
 			
-			StringBuffer famTableHeader = new StringBuffer("                                                                           ");
-	        StringBuffer famTableInfo   = new StringBuffer("                                                                           ");
+			StringBuffer famTableHeader = new StringBuffer("                                                                                                                                                                                                                                                                                                                                                                                                                                                             ");
+	        StringBuffer famTableInfo   = new StringBuffer("                                                                                                                                                                                                                                                                                                                                                                                                                                                             ");
 	        famTableHeader.insert(0, "Family ID");
 	        famTableHeader.insert(15, "Husband ID");
 	        famTableHeader.insert(30, "Husband Name");
@@ -181,9 +181,14 @@ public class GEDData {
 	        
 	        int index = 60;
 	        int childNumber = 1;
-	        for(IndividualData child : family.children)
+//	        if( family.children.size()>0){
+//	        IndividualData child = family.children.get(0);
+//	        System.out.println("+++++++++++++++++++++++");
+//	        System.out.println(child.name);
+//	        System.out.println("+++++++++++++++++++++++");
+	        for(int i=0; i<= family.children.size()-1; i++ )
 	        {
-	        	
+	        	IndividualData child = family.children.get(i);
 	        	index += 15;
 	        	famTableHeader.insert(index, "Child" + childNumber + " ID");
 	        	famTableInfo.insert(index, child.id());

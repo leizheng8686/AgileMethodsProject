@@ -156,8 +156,9 @@ public class GEDData {
             	  	  
 		for (FamilyData family : families) {
 			
-			StringBuffer famTableHeader = new StringBuffer("                                       ");
-	        StringBuffer famTableInfo   = new StringBuffer("                                       ");
+			StringBuffer famTableHeader = new StringBuffer("                                                                                                                                                                                                                                                                                                                                                                                                                                                             ");
+	        StringBuffer famTableInfo   = new StringBuffer("                                                                                                                                                                                                                                                                                                                                                                                                                                                             ");
+
 	        famTableHeader.insert(0, "Family ID");
 	        famTableHeader.insert(15, "Husband ID");
 	        famTableHeader.insert(30, "Husband Name");
@@ -182,9 +183,10 @@ public class GEDData {
 	        famTableInfo = new StringBuffer (famTableInfo.subSequence(0, 50));
 	        int index = 60;
 	        int childNumber = 1;
-	        for(IndividualData child : family.children)
+
+	        for(int i=0; i<= family.children.size()-1; i++ )
 	        {
-	        	
+	        	IndividualData child = family.children.get(i);
 	        	index += 15;
 	        	famTableHeader.append("\t" + "Child" + childNumber + "_ID");
 	        	famTableInfo.append("\t" + child.id());

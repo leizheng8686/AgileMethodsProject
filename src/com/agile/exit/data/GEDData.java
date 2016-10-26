@@ -156,14 +156,13 @@ public class GEDData {
             	  	  
 		for (FamilyData family : families) {
 			
-			StringBuffer famTableHeader = new StringBuffer("                                                                           ");
-	        StringBuffer famTableInfo   = new StringBuffer("                                                                           ");
+			StringBuffer famTableHeader = new StringBuffer("                                       ");
+	        StringBuffer famTableInfo   = new StringBuffer("                                       ");
 	        famTableHeader.insert(0, "Family ID");
 	        famTableHeader.insert(15, "Husband ID");
 	        famTableHeader.insert(30, "Husband Name");
 	        famTableHeader.insert(45, "Wife ID");
 	        famTableHeader.insert(60, "Wife Name");
-	        
 
 	        famTableInfo.insert(0, family.id());
 	        
@@ -179,18 +178,20 @@ public class GEDData {
 	        	famTableInfo.insert(60, family.wife.name);
 	        }
 	        
+	        famTableHeader = new StringBuffer(famTableHeader.subSequence(0, 50));
+	        famTableInfo = new StringBuffer (famTableInfo.subSequence(0, 50));
 	        int index = 60;
 	        int childNumber = 1;
 	        for(IndividualData child : family.children)
 	        {
 	        	
 	        	index += 15;
-	        	famTableHeader.insert(index, "Child" + childNumber + " ID");
-	        	famTableInfo.insert(index, child.id());
+	        	famTableHeader.append("\t" + "Child" + childNumber + "_ID");
+	        	famTableInfo.append("\t" + child.id());
 	        	
 	        	index += 15;
-	        	famTableHeader.insert(index, "Child" + childNumber + " Name");
-	        	famTableInfo.insert(index, child.name);
+	        	famTableHeader.append("\t" + "Child" + childNumber + "_Name");
+	        	famTableInfo.append("\t\t" + child.name);
 	        	
 	        	childNumber++;
 	        }

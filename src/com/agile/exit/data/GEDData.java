@@ -179,8 +179,12 @@ public class GEDData {
 	        	famTableInfo.insert(60, family.wife.name);
 	        }
 	        
-	        famTableHeader = new StringBuffer(famTableHeader.subSequence(0, 50));
-	        famTableInfo = new StringBuffer (famTableInfo.subSequence(0, 50));
+	        int maxLen = famTableHeader.toString().trim().length() > 
+	        				famTableInfo.toString().trim().length()?
+	        						famTableHeader.toString().trim().length():
+	        							famTableInfo.toString().trim().length();
+	        famTableHeader = new StringBuffer(famTableHeader.subSequence(0, maxLen));
+	        famTableInfo = new StringBuffer (famTableInfo.subSequence(0, maxLen));
 	        int index = 60;
 	        int childNumber = 1;
 

@@ -517,6 +517,8 @@
 0 NOTE ********************************
 0 NOTE *** US18 Error case 1
 0 NOTE Indiv I30 married to sibling I31
+0 NOTE *** US21 Error case 1
+0 NOTE I30 is F and Husband, I31 is M and Wife
 0 @F13@ FAM
 1 HUSB @I28@
 1 WIFE @I29@
@@ -529,6 +531,8 @@
 0 NOTE ********************************
 0 NOTE *** US5 Error case 1
 0 NOTE *** New created family
+0 NOTE *** US21 Error case 2
+0 NOTE I32 is F and Husband, I33 is M and Wife
 0 @F15@ FAM
 1 HUSB @I32@
 1 WIFE @I33@

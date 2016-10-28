@@ -304,6 +304,77 @@ public class ssonntagUserStories {
 		return message;
 	}
 	
+	
+	/**
+	 * Sprint 3
+	 * 
+	 * US19: First cousins should not marry
+	 *       First cousins should not marry one another
+	 */
+
+	public String US19() {
+		String message = printHead(" US19 :  First cousins should not marry ");
+		String debugMsg = "";
+		
+		GEDData gedData = GEDData.getInstance();
+		
+		// Look at each individual
+		for(IndividualData individual : gedData.individuals) {
+		
+			// if listed as a child in family
+			if(null != individual.familyAsChild)
+			{
+				// ssonntag - To be continued
+			}
+			
+		}
+		
+		autoPrintIfSet(message);
+		// uncomment for debug
+		//autoPrintIfSet(debugMsg);
+		return message;
+	}
+	
+	/**
+	 * Sprint 3
+	 * 
+	 * US21: Correct gender for role
+	 *       Husband in family should be male and wife in family should be female
+	 */
+
+	public String US21() {
+		String message = printHead(" US21 :  Correct gender for role ");
+		String debugMsg = "";
+		
+		GEDData gedData = GEDData.getInstance();
+		
+		// Look at each Family
+		for (FamilyData family : gedData.families) {
+			
+			// if husband is listed and sex is female ("F")
+			if( null != family.husband && family.husband.sex.compareTo("F") == 0)
+			{
+				// print error
+				message += "ERROR: INDIVIDUAL: Husband " + family.husband.id() + " in family " + family.id()
+						+ "is indicated as female\n";
+			}
+			
+			// if wife is listed and sex is female ("M")
+			if( null != family.wife && family.wife.sex.compareTo("M") == 0)
+			{
+				// print error
+				message += "ERROR: INDIVIDUAL: Wife " + family.wife.id() + " in family " + family.id()
+						+ "is indicated as male\n";
+			}
+			
+		}
+		
+		autoPrintIfSet(message);
+		// uncomment for debug
+		//autoPrintIfSet(debugMsg);
+		return message;
+	}
+	
 	// Function to determine if search ID (searchId) is preset within the descendant tree of source ID (sourceId)
 	int MAX_DESCENDANT_TREE_RECURSION_DEPTH = 10; // Will traverse down 10 generations max
 	

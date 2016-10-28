@@ -318,16 +318,49 @@ public class ssonntagUserStories {
 		
 		GEDData gedData = GEDData.getInstance();
 		
-		// Look at each individual
-		for(IndividualData individual : gedData.individuals) {
 		
-			// if listed as a child in family
-			if(null != individual.familyAsChild)
-			{
-				// ssonntag - To be continued
-			}
-			
-		}
+		// Look at each Family
+		for (FamilyData family : gedData.families) 
+		{	
+			// for each child in family
+			for(String childId : family.childrenStrings) 
+			{		
+				// if husband is listed as child in family
+				if(null != family.husband && null != family.husband.familyAsChild)
+				{
+					// for each of husband's siblings
+					for(String husbandSiblingId : family.husband.familyAsChild.childrenStrings) 
+					{		
+						// for each of husband's sibling's family
+						for(FamilyData husbandSiblingsFamily : gedData.getIndividualDataFromId(husbandSiblingId).familiesAsSpouse)
+						{
+							// get husband's sibling's children (cousins)
+							for(String cousinId : husbandSiblingsFamily.childrenStrings) 
+							{
+								
+								IndividualData childIndiv = gedData.getIndividualDataFromId(childId);
+
+								// for all of families in which child is listed as spouse, check if married to 1st cousin
+								for(FamilyData childFamilyAsSpouse : childIndiv.familiesAsSpouse) 
+								{			
+									if(null != childFamilyAsSpouse.husband && null != childFamilyAsSpouse.wife )  
+									{
+										
+										if(childFamilyAsSpouse.husband.id().compareTo(cousinId) == 0 ||
+										   childFamilyAsSpouse.wife.id().compareTo(cousinId) == 0)
+										{
+											// print error
+											message += "ERROR: INDIVIDUAL: " + childId + " is married to 1st cousin " + cousinId + "\n";
+										}
+									} // if(null != childFamilyAsSpouse.husband() && null != childFamilyAsSpouse.wife() )  									
+								} // for(FamilyData childFamilyAsSpouse : childIndiv.familiesAsSpouse) 
+							} // for(String cousinId : husbandSiblingsFamily.childrenStrings) 
+						} // for(FamilyData husbandSiblingsFamily : gedData.getIndividualDataFromId(husbandSiblingId).familiesAsSpouse)
+					} // for(String husbandSiblingId : family.husband.familyAsChild.childrenStrings) 
+				} // if(null != family.husband && null != family.husband.familyAsChild)
+			} // for(String childId : family.childrenStrings) 
+		} // for (FamilyData family : gedData.families) 
+		
 		
 		autoPrintIfSet(message);
 		// uncomment for debug

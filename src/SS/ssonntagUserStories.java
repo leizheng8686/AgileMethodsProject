@@ -349,8 +349,11 @@ public class ssonntagUserStories {
 										if(childFamilyAsSpouse.husband.id().compareTo(cousinId) == 0 ||
 										   childFamilyAsSpouse.wife.id().compareTo(cousinId) == 0)
 										{
-											// print error
-											message += "ERROR: INDIVIDUAL: " + childId + " is married to 1st cousin " + cousinId + "\n";
+											if( childId.compareTo(cousinId) != 0)
+											{
+												// print error
+												message += "ERROR: INDIVIDUAL: " + childId + " is married to 1st cousin " + cousinId + "\n";
+											}
 										}
 									} // if(null != childFamilyAsSpouse.husband() && null != childFamilyAsSpouse.wife() )  									
 								} // for(FamilyData childFamilyAsSpouse : childIndiv.familiesAsSpouse) 

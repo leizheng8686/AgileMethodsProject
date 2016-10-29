@@ -152,11 +152,80 @@
 2 DATE 1 JAN 1930
 1 DEAT Y
 2 DATE 1 JAN 1920
+0 NOTE ********************************************
+0 NOTE *** US19 Error case 1, 2
+0 NOTE *** Cousins I36/I39 and I42/I43 Married
+0 @I40@ INDI
+1 NAME Victoria /Rivera/
+1 SEX F
+1 BIRT
+2 DATE 8 JUL 1910
+1 FAMS @F17@
+0 @I41@ INDI
+1 NAME Steve /Sonntag/
+1 SEX M
+1 BIRT
+2 DATE 5 JUL 1910
+0 @I34@ INDI
+1 NAME Jillian /Festa/
+1 SEX F
+1 BIRT
+2 DATE 5 JUL 1930
+1 FAMS @F18@
+0 @I35@ INDI
+1 NAME Brett /Sonntag/
+1 SEX M
+1 BIRT
+2 DATE 4 JUL 1930
+1 FAMS @F18@
+1 FAMC @F17@
+0 @I38@ INDI
+1 NAME Amanda /Green/
+1 SEX F
+1 BIRT
+2 DATE 12 JUL 1930
+1 FAMS @F19@
+0 @I37@ INDI
+1 NAME Billy /Sonntag/
+1 SEX M
+1 BIRT
+2 DATE 13 JUL 1930
+1 FAMS @F19@
+1 FAMC @F17@
+0 @I36@ INDI
+1 NAME Bridget /Sonntag/
+1 SEX F
+1 BIRT
+2 DATE 12 JUL 1950
+1 FAMS @F20@
+1 FAMC @F18@
+0 @I42@ INDI
+1 NAME Shelly /Sonntag/
+1 SEX F
+1 BIRT
+2 DATE 13 JUL 1950
+1 FAMS @F21@
+1 FAMC @F18@
+0 @I39@ INDI
+1 NAME Dan /Sonntag/
+1 SEX M
+1 BIRT
+2 DATE 22 JUL 1950
+1 FAMS @F20@
+1 FAMC @F19@
+0 @I43@ INDI
+1 NAME Frank /Sonntag/
+1 SEX M
+1 BIRT
+2 DATE 23 JUL 1950
+1 FAMS @F21@
+1 FAMC @F19@
 0 @F1@ FAM
 1 HUSB @I1@
 1 WIFE @I14@
 1 MARR
 2 DATE 6 JUN 1990
+0 NOTE *** END US19 Error case 1,2 ****************
 0 NOTE ********************************************
 0 NOTE *** US32 Error
 0 @I21@ INDI
@@ -406,7 +475,7 @@
 0 NOTE *** US5 Error case 1
 0 NOTE *** New created family
 0 NOTE *** US21 Error case 2
-0 NOTE I32 is F and Husband, I33 is M and Wife
+0 NOTE *** I32 is F and Husband, I33 is M and Wife
 0 @F15@ FAM
 1 HUSB @I32@
 1 WIFE @I33@
@@ -415,6 +484,41 @@
 1 DIV
 2 DATE 13 SEP 1965
 0 NOTE ******************************
+0 NOTE ********************************
+0 NOTE *** US19 Error case 1 
+0 NOTE *** Cousins I36/I39 and I42/I43 Married
+0 @F17@ FAM
+1 HUSB @I41@
+1 WIFE @I40@
+1 CHIL @I35@
+1 CHIL @I37@
+1 MARR
+2 DATE 21 MAY 1929
+0 @F18@ FAM
+1 HUSB @I35@
+1 WIFE @I34@
+1 CHIL @I36@
+1 CHIL @I42@
+1 MARR
+2 DATE 20 MAY 1949
+0 @F19@ FAM
+1 HUSB @I37@
+1 WIFE @I38@
+1 CHIL @I39@
+1 CHIL @I43@
+1 MARR
+2 DATE 19 MAY 1949
+0 @F20@ FAM
+1 HUSB @I39@
+1 WIFE @I36@
+1 MARR
+2 DATE 18 MAY 1969
+0 @F21@ FAM
+1 HUSB @I43@
+1 WIFE @I42@
+1 MARR
+2 DATE 17 MAY 1969
+0 NOTE ********************************
 0 NOTE ********************************************
 0 NOTE *** US35 output
 0 @I21@ INDI

@@ -5,8 +5,6 @@
 Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
 @F1@           @I1@           	James         @I14@          	Helen       
 Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
-@F1@           @I1@           	James         @I14@          	Helen       
-Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
 @F2@           @I2@           	Jack          @I3@           	Mary     
 Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
 @F3@           @I5@           	Tom           @I6@           	Cynthia    

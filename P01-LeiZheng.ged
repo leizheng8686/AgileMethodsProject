@@ -319,11 +319,6 @@
 2 DATE 23 JUL 1950
 1 FAMS @F21@
 1 FAMC @F19@
-0 @F1@ FAM
-1 HUSB @I1@
-1 WIFE @I14@
-1 MARR
-2 DATE 6 JUN 1990
 0 NOTE *** END US19 Error case 1,2 ****************
 0 NOTE ********************************************
 0 NOTE *** US32 Error
@@ -677,10 +672,10 @@
 0 NOTE ********************************
 0 NOTE ********************************************
 0 NOTE *** US35 output
-0 @I21@ INDI
+0 @I85@ INDI
 1 NAME Ekkasit /JohnUS35/
-2 GIVN AA
-2 SURN BB
+2 GIVN Ekkasit
+2 SURN JohnUS35
 1 SEX F
 1 BIRT
 2 DATE 2 OCT 2016

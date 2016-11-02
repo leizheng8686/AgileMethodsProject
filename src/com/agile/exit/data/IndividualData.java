@@ -10,6 +10,8 @@ import java.util.Date;
  */
 public class IndividualData extends BaseData {
 	public String name = "";
+	public String givnName = "";
+	public String surnName = "";
 	public String sex = "";
 	public Date birth;
 	public Date dateOfDeath;
@@ -26,6 +28,10 @@ public class IndividualData extends BaseData {
 //		System.out.println(tagName);
 		if(tagName.equals("NAME")){
 			name = data;
+		}if(tagName.equals("GIVN")){
+			givnName = data;
+		}if(tagName.equals("SURN")){
+			surnName = data;
 		}else if(tagName.equals("SEX")){
 			sex = data;
 		}else if(tagName.equals("DATE") ){

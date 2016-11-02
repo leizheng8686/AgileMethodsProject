@@ -50,4 +50,15 @@ ID		Name
 @I82@ 	Jiff2
 @I83@ 	Jiff3
 @I84@ 	Jiff4
+@I96@ 	Jiff5
+@I86@ 	Jiff6
+@I87@ 	Jiff7
+@I88@ 	Jiff8
+@I89@ 	Jiff9
+@I90@ 	Jiff10
+@I91@ 	Jiff11
+@I92@ 	Jiff12
+@I93@ 	Jiff13
+@I94@ 	Jiff14
+@I95@ 	Jiff15
 @I85@ 	Ekkasit

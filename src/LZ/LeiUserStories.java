@@ -239,7 +239,7 @@ public class LeiUserStories {
 		return message;
 	}
 	
-	/* TODO
+	/* 
 	 * US14 : Multiple births less than 5
 	 * No more than five siblings should be born at the same time
 	 */
@@ -274,6 +274,46 @@ public class LeiUserStories {
 						message += "ERROR: INDIVIDUAL: US14: These children : " + ids 
 								+ " are born in the same day: " + bartDateFormat.format(key) + "\n";
 					}
+				}
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+	
+	/* 
+	 * US15 : Fewer than 15 siblings
+	 * There should be fewer than 15 siblings in a family
+	 */
+	public String US15(){
+		String message = printHead(" US15 : Fewer than 15 siblings ");
+		for(FamilyData family : GEDData.getInstance().families){
+			if(family.children.size() > 14){
+				message += "ERROR: FAMILY: US15: Family: " + family.id()
+						+ " has " + family.children.size() + " siblings" + "\n";
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+	
+	/* 
+	 * US16 : Male last names
+	 * All male members of a family should have the same last name
+	 */
+	public String US16(){
+		String message = printHead(" US16 : Male last names ");
+		for(FamilyData family : GEDData.getInstance().families){
+			if(family.husband.surnName != null){
+				for(IndividualData child : family.children){
+					if(child.sex.equals("M") && child.surnName != null){
+						if(!child.surnName.equals(family.husband.surnName)){
+							message += "ERROR: INDIVIDUAL: US16: male child: " + child.id()
+							+ " whoes last name: " + child.surnName + " is different from his father's: " 
+							+ family.husband.surnName + "\n";
+						}
+					}else
+						continue;
 				}
 			}
 		}

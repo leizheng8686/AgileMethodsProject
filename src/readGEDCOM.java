@@ -266,6 +266,8 @@ public class readGEDCOM {
 		lz.US12();
 		lz.US13();
 		lz.US14();
+		lz.US15();
+		lz.US16();
 	}
 
 	public static void main(String args[]) {

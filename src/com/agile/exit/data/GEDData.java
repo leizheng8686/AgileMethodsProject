@@ -179,25 +179,27 @@ public class GEDData {
 	        	famTableInfo.insert(60, family.wife.name);
 	        }
 	        
-	        int maxLen = famTableHeader.toString().trim().length() > 
-	        				famTableInfo.toString().trim().length()?
-	        						famTableHeader.toString().trim().length():
-	        							famTableInfo.toString().trim().length();
-	        famTableHeader = new StringBuffer(famTableHeader.subSequence(0, maxLen));
-	        famTableInfo = new StringBuffer (famTableInfo.subSequence(0, maxLen));
+//	        int maxLen = famTableHeader.toString().trim().length() > 
+//	        				famTableInfo.toString().trim().length()?
+//	        						famTableHeader.toString().trim().length():
+//	        							famTableInfo.toString().trim().length();
+	        famTableHeader = new StringBuffer(famTableHeader.subSequence(0, 85));
+	        famTableInfo = new StringBuffer (famTableInfo.subSequence(0, 85));
 	        int index = 60;
 	        int childNumber = 1;
 
+//	        famTableHeader.append("\t"+ maxLen + "\t");
+//	        famTableInfo.append("\t"+ maxLen + "\t");
 	        for(int i=0; i<= family.children.size()-1; i++ )
 	        {
 	        	IndividualData child = family.children.get(i);
 	        	index += 15;
-	        	famTableHeader.append("\t" + "Child" + childNumber + "_ID");
-	        	famTableInfo.append("\t" + child.id());
+	        	famTableHeader.append("Child" + childNumber + "_ID" + blankOffset("Child" + childNumber + "_ID", 20));
+	        	famTableInfo.append(child.id() + blankOffset(child.id(), 20));
 	        	
 	        	index += 15;
-	        	famTableHeader.append("\t" + "Child" + childNumber + "_Name");
-	        	famTableInfo.append("\t\t" + child.name);
+	        	famTableHeader.append("Child" + childNumber + "_Name" + blankOffset("Child" + childNumber + "_Name", 20));
+	        	famTableInfo.append(child.name + blankOffset(child.name, 20));
 	        	
 	        	childNumber++;
 	        }
@@ -206,6 +208,17 @@ public class GEDData {
 		}
 		
 		return printFormattedMsg;
+	}
+	
+	public String blankOffset(String str, int n){
+		if(str.length() < n){
+			int len =  n - str.length();
+			String rs = "";
+			for(int i = 0; i<len; i++)
+				rs += " ";
+			return rs;
+		}else
+			return "";
 	}
 	
 }

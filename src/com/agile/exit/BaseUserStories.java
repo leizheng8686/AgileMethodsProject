@@ -30,6 +30,20 @@ public class BaseUserStories {
 		return localIndividualDate;
 	}
 	
+	public LocalDate getThisYearAniversary(Date date){
+		LocalDateTime now = LocalDateTime.now();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		
+		LocalDate localIndividualDate = LocalDate.of( 
+				now.getYear(), 
+				calendar.get(Calendar.MONTH)+1, 
+				calendar.get(Calendar.DAY_OF_MONTH)
+			);
+		return localIndividualDate;
+	}
+	
+	
 	
 	/**
 	 * Helper

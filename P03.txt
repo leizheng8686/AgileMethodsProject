@@ -601,3 +601,20 @@
 1 DEAT Y
 2 DATE 3 OCT 2016
 0 TRLR
+0 NOTE ********************************
+0 NOTE ********************************************
+0 NOTE *** US38 output
+0 @I86@ INDI
+1 NAME Ekkasit /JohnUS38/
+1 SEX F
+1 BIRT
+2 DATE 2 DEC 2016
+0 NOTE ********************************
+0 NOTE ********************************************
+0 NOTE *** US39 output
+0 @F18@ FAM
+1 HUSB @I38@
+1 WIFE @I35@
+1 MARR
+2 DATE 20 NOV 1949
+0 TRLR

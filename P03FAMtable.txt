@@ -42,3 +42,5 @@ Family ID      Husband ID     Husband Name   Wife ID        Wife Name
 @F20@          @I39@          	Dan           @I36@          	Bridget       
 Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
 @F21@          @I43@          	Frank         @I42@          	Shelly         
+Family ID      Husband ID     Husband Name   Wife ID        Wife Name                          
+@F18@          @I38@          	Amanda        @I35@          	Brett          

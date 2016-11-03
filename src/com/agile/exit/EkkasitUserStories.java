@@ -157,6 +157,55 @@ public class EkkasitUserStories extends BaseUserStories{
 		return message;
 	}
 	
+	public String getUs38(){
+		String message = printHead(" US38	List all living people in a GEDCOM file whose birthdays occur in the next 30 days ");
+		for( IndividualData individual : GEDData.getInstance().individuals){
+			Boolean isAlive = true;
+			if( individual.birth != null ){
+				//check alive
+				if( individual.dateOfDeath != null ){
+					long days = ChronoUnit.DAYS.between(
+							getCurrentDateTimeByDate(individual.dateOfDeath), 
+							getCurrentLocalDateTime()
+					);
+					if( days >= 0){
+						isAlive = false;
+					}
+				}
+				if( isAlive ){
+					long days = ChronoUnit.DAYS.between(
+							getCurrentLocalDateTime(),
+							getCurrentDateTimeByDate(individual.birth)
+					);
+					if( days>=0 && days<=30 ){
+						message += "	- "+individual.name + "\n";
+					}
+				}
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+	
+	public String getUs39(){
+		String message = printHead(" US39	List all living couples in a GEDCOM file whose marriage anniversaries occur in the next 30 days ");
+		for( FamilyData family : GEDData.getInstance().families){
+			if( family.husband!=null && family.husband.dateOfDeath==null && family.wife!=null && family.wife.dateOfDeath==null ){
+				if( family.marriageDate!=null ){
+					long days = ChronoUnit.DAYS.between(
+							getCurrentLocalDateTime(),
+							getThisYearAniversary( family.marriageDate )
+					);
+					if( days>=0 && days<=30){
+						message += "	- "+family.husband.name+" && "+family.wife.name + "\n";
+					}
+				}
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+	
 	
 	private void addIfNotExist(IndividualData individualInsert, ArrayList<IndividualData> individuals)
 	{

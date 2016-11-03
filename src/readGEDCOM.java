@@ -234,6 +234,8 @@ public class readGEDCOM {
 		ekkasitUserStories.getUs32();
 		ekkasitUserStories.getUs35();
 		ekkasitUserStories.getUs36();
+		ekkasitUserStories.getUs38();
+		ekkasitUserStories.getUs39();
 		
 		//jf data
 		jfUserStory jf =new jfUserStory();

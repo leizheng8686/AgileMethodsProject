@@ -70,7 +70,7 @@
 1 NAME Jim /Smith/
 1 SEX F
 1 BIRT
-2 DATE 1 JAN 1990
+2 DATE 1 JAN 3990
 1 FAMC @F6@
 0 @I12@ INDI
 1 NAME Adam /Taylor/

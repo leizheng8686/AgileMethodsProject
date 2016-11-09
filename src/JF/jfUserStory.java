@@ -1,8 +1,13 @@
 package JF;
 
 import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Calendar;
 import com.agile.exit.data.FamilyData;
 import com.agile.exit.data.GEDData;
 import com.agile.exit.data.IndividualData;
@@ -180,7 +185,7 @@ public class jfUserStory {
 					&& family.husband.dateOfDeath != null
 					&& family.wife.dateOfDeath != null) {
 				if (family.divorceDate.compareTo(family.husband.dateOfDeath) > 0) {
-					message += "ERROR: FAMILY: US05: " + family.id()
+					message += "ERROR: FAMILY: US06: " + family.id()
 							+ ": Divorce date:"
 							+ bartDateFormat.format(family.divorceDate)
 							+ " occur after husband death date"
@@ -188,7 +193,7 @@ public class jfUserStory {
 							+ "\n";
 				} else if (family.divorceDate
 						.compareTo(family.wife.dateOfDeath) > 0) {
-					message += "ERROR: FAMILY: US05: " + family.id()
+					message += "ERROR: FAMILY: US06: " + family.id()
 							+ ": Divorce date:"
 							+ bartDateFormat.format(family.divorceDate)
 							+ " occur after wife death date"
@@ -200,6 +205,62 @@ public class jfUserStory {
 		autoPrintIfSet(message);
 		return message;
 	}
+
+	/**
+	 * Sprint4
+	 */
+
+	public String getUs07() {
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		String message = printHead(" US07 : Less then 150 years old ");
+		for (IndividualData individual : GEDData.getInstance().individuals) {
+			if (individual.birth != null) {
+				long year = getYearsDiff(individual.birth, new Date());
+				if (year <= 150 && individual.birth.compareTo(new Date()) < 0) {
+					message += "ERROR: INDIVIDUAL: US07: " + individual.id()
+							+ " is less than 150 years old:"
+							+ bartDateFormat.format(individual.birth) + "\n";
+				}
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+
+	public String getUs09() {
+		SimpleDateFormat bartDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		String message = printHead(" US09 : Birth before death of parents ");
+		for (FamilyData family : GEDData.getInstance().families) {
+			if (family.children != null) {
+				for (IndividualData indi : family.children)
+					if (indi.birth != null) {
+						if (family.husband != null
+								&& family.husband.dateOfDeath != null
+								&& indi.birth
+										.compareTo(family.husband.dateOfDeath) > 0)
+							message += "ERROR: INDIVIDUAL: US09: "
+									+ bartDateFormat.format(indi.birth)
+									+ "is birth after dead of father "
+									+ bartDateFormat
+											.format(family.husband.dateOfDeath)
+									+ ")\n";
+						if (family.wife != null
+								&& family.wife.dateOfDeath != null
+								&& indi.birth
+										.compareTo(family.wife.dateOfDeath) > 0)
+							message += "ERROR: INDIVIDUAL: US09: "
+									+ bartDateFormat.format(indi.birth)
+									+ " is birth after dead of mother "
+									+ bartDateFormat
+											.format(family.wife.dateOfDeath)
+									+ ")\n";
+					}
+			}
+		}
+		autoPrintIfSet(message);
+		return message;
+	}
+
 	/**
 	 * Helper
 	 */
@@ -224,5 +285,34 @@ public class jfUserStory {
 			line += "*";
 		}
 		return line;
+	}
+
+	public int getYearsDiff(Date birthDay, Date thatDay) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(thatDay);
+
+		if (cal.before(birthDay)) {
+			throw new IllegalArgumentException("The birthDay is after the day!");
+		}
+		int yearNow = cal.get(Calendar.YEAR);
+		int monthNow = cal.get(Calendar.MONTH);
+		int dayOfMonthNow = cal.get(Calendar.DAY_OF_MONTH);
+		cal.setTime(birthDay);
+
+		int yearBirth = cal.get(Calendar.YEAR);
+		int monthBirth = cal.get(Calendar.MONTH);
+		int dayOfMonthBirth = cal.get(Calendar.DAY_OF_MONTH);
+
+		int age = yearNow - yearBirth;
+
+		if (monthNow <= monthBirth) {
+			if (monthNow == monthBirth) {
+				if (dayOfMonthNow < dayOfMonthBirth)
+					age--;
+			} else {
+				age--;
+			}
+		}
+		return age;
 	}
 }

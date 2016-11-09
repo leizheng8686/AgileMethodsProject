@@ -17,7 +17,7 @@ public class readGEDCOM {
 		File proj3 = new File("P03.txt");
 		File indi = new File("P03INDI.txt");
 		File fam = new File("P03FAM.txt");
-        File famTable = new File("P03FAMtable.txt");
+		File famTable = new File("P03FAMtable.txt");
 		File output = new File("P03output.txt");
 		BufferedReader reader = null;
 		BufferedReader reader1 = null;
@@ -28,7 +28,7 @@ public class readGEDCOM {
 		BufferedWriter writer1 = null;
 		BufferedWriter writer2 = null;
 		BufferedWriter writer3 = null;
-        BufferedWriter writerFamTable = null;
+		BufferedWriter writerFamTable = null;
 		List<String> list0 = new ArrayList<>();
 		list0.add("INDI");
 		list0.add("FAM");
@@ -54,19 +54,19 @@ public class readGEDCOM {
 			writer = new BufferedWriter(new FileWriter(proj3));
 			writer1 = new BufferedWriter(new FileWriter(indi));
 			writer2 = new BufferedWriter(new FileWriter(fam));
-            writerFamTable = new BufferedWriter(new FileWriter(famTable));
+			writerFamTable = new BufferedWriter(new FileWriter(famTable));
 			String str = null;
-            
-            // Print ID/Name Header for print of individuals
-            writer1.write("******************\r\n");
-            writer1.write("* Individuals\r\n\n");
-            writer1.write("ID\t\tName\r\n");
+
+			// Print ID/Name Header for print of individuals
+			writer1.write("******************\r\n");
+			writer1.write("* Individuals\r\n\n");
+			writer1.write("ID\t\tName\r\n");
 			while ((str = reader.readLine()) != null) {
 				String elems[] = str.split(" ");
-				
-				//EKKASIT data
+
+				// EKKASIT data
 				GEDData.getInstance().addGEDString(str);
-				
+
 				if (elems[0].equals("0")) {
 					for (int i = 1; i < elems.length; i++) {
 						if (list0.contains(elems[i])) {
@@ -96,24 +96,26 @@ public class readGEDCOM {
 			writer.close();
 			writer1.close();
 
-            // Print Header for print of families
-            writerFamTable.write("\r\n******************\r\n");
-            writerFamTable.write("* Families\r\n\r\n");
-            
-            // string array to save family entries for table-formatted print
-            String familyId = "";
-            String husbandData[] = {"", ""};
-            String wifeData[] = {"", ""};
-            StringBuffer famTableHeader = new StringBuffer("                                                ");
-            StringBuffer famTableInfo   = new StringBuffer("                                                ");
-            int ID_INDEX = 0;
-            int NAME_INDEX = 1;
-            boolean firstFamily = true;
-            famTableHeader.insert(0, "Family ID");
-            famTableHeader.insert(15, "Husband ID");
-            famTableHeader.insert(30, "Husband Name");
-            famTableHeader.insert(45, "Wife ID");
-            famTableHeader.insert(60, "Wife Name");
+			// Print Header for print of families
+			writerFamTable.write("\r\n******************\r\n");
+			writerFamTable.write("* Families\r\n\r\n");
+
+			// string array to save family entries for table-formatted print
+			String familyId = "";
+			String husbandData[] = { "", "" };
+			String wifeData[] = { "", "" };
+			StringBuffer famTableHeader = new StringBuffer(
+					"                                                ");
+			StringBuffer famTableInfo = new StringBuffer(
+					"                                                ");
+			int ID_INDEX = 0;
+			int NAME_INDEX = 1;
+			boolean firstFamily = true;
+			famTableHeader.insert(0, "Family ID");
+			famTableHeader.insert(15, "Husband ID");
+			famTableHeader.insert(30, "Husband Name");
+			famTableHeader.insert(45, "Wife ID");
+			famTableHeader.insert(60, "Wife Name");
 
 			reader1 = new BufferedReader(new FileReader(proj1));
 			String str1 = null;
@@ -125,25 +127,29 @@ public class readGEDCOM {
 						if (elems1[i].equals("FAM")) {
 							writer2.write(elems1[1] + "\r");
 
-                            if( false == firstFamily ) {
-                                famTableInfo.insert(0, familyId);
-                                famTableInfo.insert(15, husbandData[ID_INDEX]);
-                                famTableInfo.insert(30, husbandData[NAME_INDEX]);
-                                famTableInfo.insert(45, wifeData[ID_INDEX]);
-                                famTableInfo.insert(60, wifeData[NAME_INDEX]);
+							if (false == firstFamily) {
+								famTableInfo.insert(0, familyId);
+								famTableInfo.insert(15, husbandData[ID_INDEX]);
+								famTableInfo
+										.insert(30, husbandData[NAME_INDEX]);
+								famTableInfo.insert(45, wifeData[ID_INDEX]);
+								famTableInfo.insert(60, wifeData[NAME_INDEX]);
 
-                                writerFamTable.write(famTableHeader.toString() + "\r\n");
-                                writerFamTable.write(famTableInfo.toString() + "\r\n");
+								writerFamTable.write(famTableHeader.toString()
+										+ "\r\n");
+								writerFamTable.write(famTableInfo.toString()
+										+ "\r\n");
 
-                            }
+							}
 
-                            firstFamily = false;
-                            familyId = elems1[1];
-                            husbandData[ID_INDEX] = "";
-                            husbandData[NAME_INDEX] = "";
-                            wifeData[ID_INDEX] = "";
-                            wifeData[NAME_INDEX] = "";
-                            famTableInfo   = new StringBuffer("                                                ");
+							firstFamily = false;
+							familyId = elems1[1];
+							husbandData[ID_INDEX] = "";
+							husbandData[NAME_INDEX] = "";
+							wifeData[ID_INDEX] = "";
+							wifeData[NAME_INDEX] = "";
+							famTableInfo = new StringBuffer(
+									"                                                ");
 						}
 					}
 				}
@@ -154,8 +160,8 @@ public class readGEDCOM {
 						if (elems1[2].equals(elems2[0])) {
 							writer2.write(elems2[0] + " ");
 							writer2.write(elems2[1] + "\r\n");
-                            husbandData[ID_INDEX] = elems2[0];
-                            husbandData[NAME_INDEX] = elems2[1];
+							husbandData[ID_INDEX] = elems2[0];
+							husbandData[NAME_INDEX] = elems2[1];
 							break;
 						}
 					}
@@ -167,8 +173,8 @@ public class readGEDCOM {
 						if (elems1[2].equals(elems3[0])) {
 							writer2.write(elems3[0] + " ");
 							writer2.write(elems3[1] + "\r\n");
-                            wifeData[ID_INDEX] = elems3[0];
-                            wifeData[NAME_INDEX] = elems3[1];  
+							wifeData[ID_INDEX] = elems3[0];
+							wifeData[NAME_INDEX] = elems3[1];
 							break;
 						}
 					}
@@ -176,22 +182,23 @@ public class readGEDCOM {
 				reader2.close();
 			}
 
-            // print last family
-            famTableInfo.insert(0, familyId);
-            famTableInfo.insert(15, husbandData[ID_INDEX]);
-            famTableInfo.insert(30, husbandData[NAME_INDEX]);
-            famTableInfo.insert(45, wifeData[ID_INDEX]);
-            famTableInfo.insert(60, wifeData[NAME_INDEX]);
-            
-            writerFamTable.write(famTableHeader.toString() + "\r\n");
-            writerFamTable.write(famTableInfo.toString() + "\r\n");
+			// print last family
+			famTableInfo.insert(0, familyId);
+			famTableInfo.insert(15, husbandData[ID_INDEX]);
+			famTableInfo.insert(30, husbandData[NAME_INDEX]);
+			famTableInfo.insert(45, wifeData[ID_INDEX]);
+			famTableInfo.insert(60, wifeData[NAME_INDEX]);
+
+			writerFamTable.write(famTableHeader.toString() + "\r\n");
+			writerFamTable.write(famTableInfo.toString() + "\r\n");
 
 			reader1.close();
 			reader2.close();
 			writer2.close();
-            writerFamTable.close();
-            
-            // Open Individual and Table-formatted Family file, merge into output
+			writerFamTable.close();
+
+			// Open Individual and Table-formatted Family file, merge into
+			// output
 			reader3 = new BufferedReader(new FileReader(indi));
 			reader4 = new BufferedReader(new FileReader(famTable));
 			writer3 = new BufferedWriter(new FileWriter(output));
@@ -216,17 +223,17 @@ public class readGEDCOM {
 				}
 			}
 		}
-		
+
 		GEDData.getInstance().convertStringToObject();
-		
+
 		// (easier) print of Individuals to console output
 		GEDData gedData = GEDData.getInstance();
 		gedData.printIndividuals();
-		
+
 		// (easer) print of families to console output
 		gedData.printFamilies();
-		
-		//EKKASIT data
+
+		// EKKASIT data
 		EkkasitUserStories ekkasitUserStories = new EkkasitUserStories();
 		ekkasitUserStories.getUs29();
 		ekkasitUserStories.getUs30();
@@ -236,19 +243,20 @@ public class readGEDCOM {
 		ekkasitUserStories.getUs36();
 		ekkasitUserStories.getUs38();
 		ekkasitUserStories.getUs39();
-		
-		//jf data
-		jfUserStory jf =new jfUserStory();
+
+		// jf data
+		jfUserStory jf = new jfUserStory();
 		jf.getUs01();
 		jf.getUs02();
 		jf.getUs03();
 		jf.getUs04();
-	    jf.getUs05();	
-	    jf.getUs06();	
-	    
-		//call lei's user stories
+		jf.getUs05();
+		jf.getUs06();
+		jf.getUs07();
+		jf.getUs09();
+		// call lei's user stories
 		leiUS();
-		
+
 		// ss data
 		ssonntagUserStories ss = new ssonntagUserStories();
 		ss.US25();
@@ -258,9 +266,9 @@ public class readGEDCOM {
 		ss.US19();
 		ss.US21();
 	}
-	
-	//Lei Zheng's User stories
-	public void leiUS(){
+
+	// Lei Zheng's User stories
+	public void leiUS() {
 		LeiUserStories lz = new LeiUserStories();
 		lz.US08();
 		lz.US10();

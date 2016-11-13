@@ -617,4 +617,53 @@
 1 WIFE @I35@
 1 MARR
 2 DATE 20 NOV 1949
+0 NOTE ********************************************
+0 NOTE *** US22 Error case 1 and 2
+0 NOTE Next 2 Individuals have the same IDs (I100)
+0 NOTE I100 and I101 have the same family IDs (F22)
+0 @I100@ INDI
+1 NAME Norm /Anderson/
+1 SEX M
+1 BIRT
+2 DATE 3 MAY 1979
+0 @I100@ INDI
+1 NAME Kris /Keller/
+1 SEX M
+1 BIRT
+2 DATE 5 OCT 1979
+0 @I101@ INDI
+1 NAME Chad /Rodgers/
+1 SEX M
+1 BIRT
+2 DATE 7 NOV 1978
+0 @F22@ FAM
+1 HUSB @I100@
+0 @F22@ FAM
+1 HUSB @I101@
+0 NOTE ********************************************
+0 NOTE ********************************************
+0 NOTE *** US23 Error case 1 and 2
+0 NOTE I102 and I103 have the same name and birth date
+0 NOTE I104 and I105 have the same name and birth date
+0 @I102@ INDI
+1 NAME Jim /Beam/
+1 SEX M
+1 BIRT
+2 DATE 12 JUN 1985
+0 @I103@ INDI
+1 NAME Jim /Beam/
+1 SEX M
+1 BIRT
+2 DATE 12 JUN 1985
+0 @I104@ INDI
+1 NAME Jack /Daniels/
+1 SEX M
+1 BIRT
+2 DATE 22 OCT 1986
+0 @I105@ INDI
+1 NAME Jack /Daniels/
+1 SEX M
+1 BIRT
+2 DATE 22 OCT 1986
+0 NOTE ********************************************
 0 TRLR

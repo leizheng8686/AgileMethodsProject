@@ -2,6 +2,9 @@ package SS;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.agile.exit.data.FamilyData;
 import com.agile.exit.data.GEDData;
 import com.agile.exit.data.IndividualData;
@@ -403,6 +406,103 @@ public class ssonntagUserStories {
 						+ "is indicated as male\n";
 			}
 			
+		}
+		
+		autoPrintIfSet(message);
+		// uncomment for debug
+		//autoPrintIfSet(debugMsg);
+		return message;
+	}
+	
+	/**
+	 * Sprint 4
+	 * 
+	 * US22: All individual IDs should be unique and all family
+	 *       IDs should be unique
+	 */
+
+	public String US22() {
+		String message = printHead(" US22 :  Unique IDs");
+		String debugMsg = "";
+		
+		GEDData gedData = GEDData.getInstance();
+		
+		Map<String, String> individualMap = new HashMap<String, String>();
+		
+		// Look at all individuals
+		for(IndividualData individual : gedData.individuals) {
+			if(null != individualMap.get(individual.id()))
+			{
+				// already mapped, so duplicate
+				message += "ERROR: INDIVIDUAL: ID " + individual.id() + " is duplicated, names: " 
+						+ individualMap.get(individual.id()) + ", " + individual.name + "\n";
+			}
+			else
+			{
+				// map new individual ID
+				individualMap.put(individual.id(), individual.name);
+			}
+		}
+		
+		Map<String, String> familyMap = new HashMap<String, String>();
+		
+		// Look at all families
+		for(FamilyData family : gedData.families) {
+			if(null != familyMap.get(family.id()))
+			{
+				// already mapped, so duplicate
+				message += "ERROR: FAMILY: ID " + family.id() + " is duplicated\n";
+			}
+			else
+			{
+				// map new individual ID
+				familyMap.put(family.id(), family.id());
+			}
+		}
+		
+		autoPrintIfSet(message);
+		// uncomment for debug
+		//autoPrintIfSet(debugMsg);
+		return message;
+	}
+	
+	/**
+	 * Sprint 4
+	 * 
+	 * US23: No more than one individual with the same name and 
+	 *       birth date should appear in a GEDCOM file
+	 */
+
+	public String US23() {
+		String message = printHead(" US23 :  Unique name and birth date");
+		String debugMsg = "";
+		
+		GEDData gedData = GEDData.getInstance();
+		
+		// store individual data based on name key
+		Map<String, IndividualData> individualMap = new HashMap<String, IndividualData>();
+		
+		// Look at all individuals
+		for(IndividualData individual : gedData.individuals) {
+			
+			// if exact name already exists in map
+			if(null != individualMap.get(individual.name))
+			{
+				// if birth date is also the same
+				if(0 == individual.birth.compareTo(individualMap.get(individual.name).birth))
+				{
+					IndividualData indiv2 = individualMap.get(individual.name);
+					
+					// name and birth date match, so print error
+					message += "ERROR: INDIVIDUAL: ID " + individual.id() + " and ID " + indiv2.id()
+							+ " have the same name and birth date: " + individual.name + "\n";
+				}
+			}
+			else
+			{
+				// map new name
+				individualMap.put(individual.name, individual);
+			}
 		}
 		
 		autoPrintIfSet(message);

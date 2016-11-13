@@ -265,6 +265,8 @@ public class readGEDCOM {
 		ss.US18();
 		ss.US19();
 		ss.US21();
+		ss.US22();
+		ss.US23();
 	}
 
 	// Lei Zheng's User stories

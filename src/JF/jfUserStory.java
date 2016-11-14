@@ -216,9 +216,9 @@ public class jfUserStory {
 		for (IndividualData individual : GEDData.getInstance().individuals) {
 			if (individual.birth != null) {
 				long year = getYearsDiff(individual.birth, new Date());
-				if (year <= 150 && individual.birth.compareTo(new Date()) < 0) {
+				if (year >= 150 && individual.birth.compareTo(new Date()) < 0) {
 					message += "ERROR: INDIVIDUAL: US07: " + individual.id()
-							+ " is less than 150 years old:"
+							+ " is more than 150 years old:"
 							+ bartDateFormat.format(individual.birth) + "\n";
 				}
 			}
